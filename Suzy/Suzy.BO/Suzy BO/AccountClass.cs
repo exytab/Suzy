@@ -38,7 +38,7 @@ namespace Suzy.BO
         }
 
 
-        public Account(account _Account)
+        internal Account(account _Account)
         {
             _account = _Account;
         }
