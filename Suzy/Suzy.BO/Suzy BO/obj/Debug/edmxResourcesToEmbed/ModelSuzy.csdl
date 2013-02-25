@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CustomSuzy" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="account" EntityType="CustomSuzyModel.account" />
+    <EntitySet Name="avatar" EntityType="CustomSuzyModel.avatar" />
+    <EntitySet Name="location_area" EntityType="CustomSuzyModel.location_area" />
+    <EntitySet Name="subscriber" EntityType="CustomSuzyModel.subscriber" />
+    <AssociationSet Name="accountsubscriber" Association="CustomSuzyModel.accountsubscriber">
+      <End Role="account" EntitySet="account" />
+      <End Role="subscriber" EntitySet="subscriber" />
+    </AssociationSet>
+    <AssociationSet Name="accountsubscriber1" Association="CustomSuzyModel.accountsubscriber1">
+      <End Role="account" EntitySet="account" />
+      <End Role="subscriber" EntitySet="subscriber" />
+    </AssociationSet>
+    <AssociationSet Name="avataraccount" Association="CustomSuzyModel.avataraccount">
+      <End Role="avatar" EntitySet="avatar" />
+      <End Role="account" EntitySet="account" />
+    </AssociationSet>
+    <AssociationSet Name="accountlocation_area" Association="CustomSuzyModel.accountlocation_area">
+      <End Role="account" EntitySet="account" />
+      <End Role="location_area" EntitySet="location_area" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="surname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="login" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="id_avatar" Type="Int32" Nullable="false" />
+    <Property Name="ban" Type="Boolean" Nullable="false" />
+    <Property Name="admin" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="subscriber" Relationship="CustomSuzyModel.accountsubscriber" FromRole="account" ToRole="subscriber" />
+    <NavigationProperty Name="subscriber1" Relationship="CustomSuzyModel.accountsubscriber1" FromRole="account" ToRole="subscriber" />
+    <NavigationProperty Name="avatar" Relationship="CustomSuzyModel.avataraccount" FromRole="account" ToRole="avatar" />
+    <NavigationProperty Name="location_area" Relationship="CustomSuzyModel.accountlocation_area" FromRole="account" ToRole="location_area" />
+  </EntityType>
+  <EntityType Name="avatar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="avatar_src" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="account" Relationship="CustomSuzyModel.avataraccount" FromRole="avatar" ToRole="account" />
+  </EntityType>
+  <EntityType Name="location_area">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="lattitude" Type="Single" Nullable="false" />
+    <Property Name="longtitude" Type="Single" Nullable="false" />
+    <Property Name="radius" Type="Single" Nullable="false" />
+    <Property Name="id_account" Type="Int32" Nullable="false" />
+    <Property Name="time_of_marking" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="account" Relationship="CustomSuzyModel.accountlocation_area" FromRole="location_area" ToRole="account" />
+  </EntityType>
+  <EntityType Name="subscriber">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="id_subscriber" Type="Int32" Nullable="false" />
+    <Property Name="id_leader" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="account" Relationship="CustomSuzyModel.accountsubscriber" FromRole="subscriber" ToRole="account" />
+    <NavigationProperty Name="account1" Relationship="CustomSuzyModel.accountsubscriber1" FromRole="subscriber" ToRole="account" />
+  </EntityType>
+  <Association Name="accountsubscriber">
+    <End Type="CustomSuzyModel.account" Role="account" Multiplicity="1" />
+    <End Type="CustomSuzyModel.subscriber" Role="subscriber" Multiplicity="*" />
+  </Association>
+  <Association Name="accountsubscriber1">
+    <End Type="CustomSuzyModel.account" Role="account" Multiplicity="1" />
+    <End Type="CustomSuzyModel.subscriber" Role="subscriber" Multiplicity="*" />
+  </Association>
+  <Association Name="avataraccount">
+    <End Type="CustomSuzyModel.avatar" Role="avatar" Multiplicity="1" />
+    <End Type="CustomSuzyModel.account" Role="account" Multiplicity="*" />
+  </Association>
+  <Association Name="accountlocation_area">
+    <End Type="CustomSuzyModel.account" Role="account" Multiplicity="1" />
+    <End Type="CustomSuzyModel.location_area" Role="location_area" Multiplicity="*" />
+  </Association>
+</Schema>

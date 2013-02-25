@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CustomSuzyModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CustomSuzyModelStoreContainer">
+          <EntitySet Name="account" EntityType="CustomSuzyModel.Store.account" store:Type="Tables" />
+          <EntitySet Name="avatar" EntityType="CustomSuzyModel.Store.avatar" store:Type="Tables" />
+          <EntitySet Name="location_area" EntityType="CustomSuzyModel.Store.location_area" store:Type="Tables" />
+          <EntitySet Name="subscriber" EntityType="CustomSuzyModel.Store.subscriber" store:Type="Tables" />
+          <AssociationSet Name="FC_account_avatar" Association="CustomSuzyModel.Store.FC_account_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_avatar" Association="CustomSuzyModel.Store.FK_account_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_subscriber" Association="CustomSuzyModel.Store.FK_account_subscriber">
+            <End Role="account" EntitySet="account" />
+            <End Role="subscriber" EntitySet="subscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_account" Association="CustomSuzyModel.Store.FK_area_account">
+            <End Role="account" EntitySet="account" />
+            <End Role="location_area" EntitySet="location_area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_leader_account" Association="CustomSuzyModel.Store.FK_leader_account">
+            <End Role="account" EntitySet="account" />
+            <End Role="subscriber" EntitySet="subscriber" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="surname" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="id_avatar" Type="int" Nullable="false" />
+          <Property Name="ban" Type="bit" Nullable="false" />
+          <Property Name="admin" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="avatar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="avatar_src" Type="nvarchar" Nullable="false" />
+        </EntityType>
+        <EntityType Name="location_area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="lattitude" Type="real" Nullable="false" />
+          <Property Name="longtitude" Type="real" Nullable="false" />
+          <Property Name="radius" Type="real" Nullable="false" />
+          <Property Name="id_account" Type="int" Nullable="false" />
+          <Property Name="time_of_marking" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="subscriber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_subscriber" Type="int" Nullable="false" />
+          <Property Name="id_leader" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FC_account_avatar">
+          <End Role="avatar" Type="CustomSuzyModel.Store.avatar" Multiplicity="1" />
+          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="id_avatar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_avatar">
+          <End Role="avatar" Type="CustomSuzyModel.Store.avatar" Multiplicity="1" />
+          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="id_avatar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_subscriber">
+          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
+          <End Role="subscriber" Type="CustomSuzyModel.Store.subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscriber">
+              <PropertyRef Name="id_subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_account">
+          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
+          <End Role="location_area" Type="CustomSuzyModel.Store.location_area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location_area">
+              <PropertyRef Name="id_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_leader_account">
+          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
+          <End Role="subscriber" Type="CustomSuzyModel.Store.subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscriber">
+              <PropertyRef Name="id_leader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CustomSuzy1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="account" EntityType="CustomSuzyModel.account" />
+          <EntitySet Name="avatar" EntityType="CustomSuzyModel.avatar" />
+          <EntitySet Name="location_area" EntityType="CustomSuzyModel.location_area" />
+          <EntitySet Name="subscriber" EntityType="CustomSuzyModel.subscriber" />
+          <AssociationSet Name="FC_account_avatar" Association="CustomSuzyModel.FC_account_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_avatar" Association="CustomSuzyModel.FK_account_avatar">
+            <End Role="avatar" EntitySet="avatar" />
+            <End Role="account" EntitySet="account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_account_subscriber" Association="CustomSuzyModel.FK_account_subscriber">
+            <End Role="account" EntitySet="account" />
+            <End Role="subscriber" EntitySet="subscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_area_account" Association="CustomSuzyModel.FK_area_account">
+            <End Role="account" EntitySet="account" />
+            <End Role="location_area" EntitySet="location_area" />
+          </AssociationSet>
+          <AssociationSet Name="FK_leader_account" Association="CustomSuzyModel.FK_leader_account">
+            <End Role="account" EntitySet="account" />
+            <End Role="subscriber" EntitySet="subscriber" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="account">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="id_avatar" Type="Int32" Nullable="false" />
+          <Property Name="ban" Type="Boolean" Nullable="false" />
+          <Property Name="admin" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="avatar" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="account" ToRole="avatar" />
+          <NavigationProperty Name="avatar1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="account" ToRole="avatar" />
+          <NavigationProperty Name="subscriber" Relationship="CustomSuzyModel.FK_account_subscriber" FromRole="account" ToRole="subscriber" />
+          <NavigationProperty Name="location_area" Relationship="CustomSuzyModel.FK_area_account" FromRole="account" ToRole="location_area" />
+          <NavigationProperty Name="subscriber1" Relationship="CustomSuzyModel.FK_leader_account" FromRole="account" ToRole="subscriber" />
+        </EntityType>
+        <EntityType Name="avatar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="avatar_src" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="account" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="avatar" ToRole="account" />
+          <NavigationProperty Name="account1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="avatar" ToRole="account" />
+        </EntityType>
+        <EntityType Name="location_area">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="lattitude" Type="Single" Nullable="false" />
+          <Property Name="longtitude" Type="Single" Nullable="false" />
+          <Property Name="radius" Type="Single" Nullable="false" />
+          <Property Name="id_account" Type="Int32" Nullable="false" />
+          <Property Name="time_of_marking" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="account" Relationship="CustomSuzyModel.FK_area_account" FromRole="location_area" ToRole="account" />
+        </EntityType>
+        <EntityType Name="subscriber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="id_subscriber" Type="Int32" Nullable="false" />
+          <Property Name="id_leader" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="account" Relationship="CustomSuzyModel.FK_account_subscriber" FromRole="subscriber" ToRole="account" />
+          <NavigationProperty Name="account1" Relationship="CustomSuzyModel.FK_leader_account" FromRole="subscriber" ToRole="account" />
+        </EntityType>
+        <Association Name="FC_account_avatar">
+          <End Role="avatar" Type="CustomSuzyModel.avatar" Multiplicity="1" />
+          <End Role="account" Type="CustomSuzyModel.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="id_avatar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_avatar">
+          <End Role="avatar" Type="CustomSuzyModel.avatar" Multiplicity="1" />
+          <End Role="account" Type="CustomSuzyModel.account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="avatar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="account">
+              <PropertyRef Name="id_avatar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_account_subscriber">
+          <End Role="account" Type="CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="subscriber" Type="CustomSuzyModel.subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscriber">
+              <PropertyRef Name="id_subscriber" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_area_account">
+          <End Role="account" Type="CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="location_area" Type="CustomSuzyModel.location_area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="location_area">
+              <PropertyRef Name="id_account" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_leader_account">
+          <End Role="account" Type="CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="subscriber" Type="CustomSuzyModel.subscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="account">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="subscriber">
+              <PropertyRef Name="id_leader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CustomSuzyModelStoreContainer" CdmEntityContainer="CustomSuzy1">
+          <EntitySetMapping Name="account">
+            <EntityTypeMapping TypeName="CustomSuzyModel.account">
+              <MappingFragment StoreEntitySet="account">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="id_avatar" ColumnName="id_avatar" />
+                <ScalarProperty Name="ban" ColumnName="ban" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avatar">
+            <EntityTypeMapping TypeName="CustomSuzyModel.avatar">
+              <MappingFragment StoreEntitySet="avatar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="avatar_src" ColumnName="avatar_src" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="location_area">
+            <EntityTypeMapping TypeName="CustomSuzyModel.location_area">
+              <MappingFragment StoreEntitySet="location_area">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lattitude" ColumnName="lattitude" />
+                <ScalarProperty Name="longtitude" ColumnName="longtitude" />
+                <ScalarProperty Name="radius" ColumnName="radius" />
+                <ScalarProperty Name="id_account" ColumnName="id_account" />
+                <ScalarProperty Name="time_of_marking" ColumnName="time_of_marking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subscriber">
+            <EntityTypeMapping TypeName="CustomSuzyModel.subscriber">
+              <MappingFragment StoreEntitySet="subscriber">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_subscriber" ColumnName="id_subscriber" />
+                <ScalarProperty Name="id_leader" ColumnName="id_leader" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

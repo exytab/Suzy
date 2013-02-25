@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CustomSuzyModelStoreContainer" CdmEntityContainer="CustomSuzy1">
+    <EntitySetMapping Name="account">
+      <EntityTypeMapping TypeName="CustomSuzyModel.account">
+        <MappingFragment StoreEntitySet="account">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id_avatar" ColumnName="id_avatar" />
+          <ScalarProperty Name="ban" ColumnName="ban" />
+          <ScalarProperty Name="admin" ColumnName="admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="avatar">
+      <EntityTypeMapping TypeName="CustomSuzyModel.avatar">
+        <MappingFragment StoreEntitySet="avatar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="avatar_src" ColumnName="avatar_src" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="location_area">
+      <EntityTypeMapping TypeName="CustomSuzyModel.location_area">
+        <MappingFragment StoreEntitySet="location_area">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lattitude" ColumnName="lattitude" />
+          <ScalarProperty Name="longtitude" ColumnName="longtitude" />
+          <ScalarProperty Name="radius" ColumnName="radius" />
+          <ScalarProperty Name="id_account" ColumnName="id_account" />
+          <ScalarProperty Name="time_of_marking" ColumnName="time_of_marking" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subscriber">
+      <EntityTypeMapping TypeName="CustomSuzyModel.subscriber">
+        <MappingFragment StoreEntitySet="subscriber">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_subscriber" ColumnName="id_subscriber" />
+          <ScalarProperty Name="id_leader" ColumnName="id_leader" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
