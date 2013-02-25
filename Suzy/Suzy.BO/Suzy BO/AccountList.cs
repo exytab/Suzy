@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    public abstract class AccountList
+    public static class AccountList
     {
-        public void Add(Account account)
+        public static void Add(Account account)
         {
             account _account = new account();
             _account.name = account.name;
@@ -25,7 +25,7 @@ namespace Suzy.BO
             }
         }
 
-        public List<Account> Get()
+        public static List<Account> Get()
         {
             using (OurDB db = new OurDB())
             {

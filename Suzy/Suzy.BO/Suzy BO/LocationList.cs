@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    public abstract class LocationList
+    public static class LocationList
     {
-        public void Add(LocationArea location_area)
+        public static void Add(LocationArea location_area)
         {
             location_area _location_area = new location_area();
             _location_area.id_account = location_area.id_account;
@@ -24,7 +24,7 @@ namespace Suzy.BO
             }
         }
 
-        public List<LocationArea> Get()
+        public static List<LocationArea> Get()
         {
             using (OurDB db = new OurDB())
             {
