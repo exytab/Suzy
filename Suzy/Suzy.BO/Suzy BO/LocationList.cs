@@ -8,7 +8,7 @@ namespace Suzy.BO
 {
     abstract class LocationList
     {
-        public static void Add(LocationArea location_area)
+        public void Add(LocationArea location_area)
         {
             location_area _location_area = new location_area();
             _location_area.id_account = location_area.id_account;
@@ -22,15 +22,14 @@ namespace Suzy.BO
             {
                 db.Location_areas.Add(_location_area);
             }
-
         }
-        public static List<LocationArea> Get()
+
+        public List<LocationArea> Get()
         {
             using (OurDB db = new OurDB())
             {
                 return db.Location_areas.ToList().Select(item => new LocationArea(item)).ToList();
             }
-
         }
 
     }

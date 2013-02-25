@@ -8,17 +8,18 @@ namespace Suzy.BO
 {
     class Account
     {
-       	private account _account;
-	
-        public int id { get { return _account.id;} private set { _account.id = value;} }
-        public string name { get { return _account.name;} set { _account.name = value;} }
-        public string surname { get { return _account.surname;} set { _account.surname = value;} }
-        public string login { get { return _account.login;} set { _account.login = value;} }
-        public string password { get { return _account.password;} set { _account.password = value;} }
-        public string email { get { return _account.email;} set { _account.email = value;} }
-        public int id_avatar { get { return _account.id_avatar;} set { _account.id_avatar = value;} }
-        public bool ban { get { return _account.ban;} set { _account.ban = value;} }
-        public bool admin { get { return _account.admin;} set { _account.admin = value;} }
+        private account _account;
+
+        public int id { get { return _account.id; } private set { _account.id = value; } }
+        public string name { get { return _account.name; } set { _account.name = value; } }
+        public string surname { get { return _account.surname; } set { _account.surname = value; } }
+        public string login { get { return _account.login; } set { _account.login = value; } }
+        public string password { get { return _account.password; } set { _account.password = value; } }
+        public string email { get { return _account.email; } set { _account.email = value; } }
+        public int id_avatar { get { return _account.id_avatar; } set { _account.id_avatar = value; } }
+        public bool ban { get { return _account.ban; } set { _account.ban = value; } }
+        public bool admin { get { return _account.admin; } set { _account.admin = value; } }
+
         public void Save()
         {
             using (OurDB db = new OurDB())
@@ -34,18 +35,17 @@ namespace Suzy.BO
                 account.admin = this.admin;
                 db.SaveChanges();
             }
-
         }
-       
 
-      public Account(account _Account)
+
+        public Account(account _Account)
         {
-			_account = _Account;
+            _account = _Account;
         }
 
         public Account()
         {
-			_account = new account();
+            _account = new account();
         }
     }
 }
