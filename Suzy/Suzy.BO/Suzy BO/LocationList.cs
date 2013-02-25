@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    abstract class LocationList
+    public abstract class LocationList
     {
         public void Add(LocationArea location_area)
         {

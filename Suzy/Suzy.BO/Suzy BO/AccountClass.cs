@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    class Account
+    public class Account
     {
         private account _account;
 

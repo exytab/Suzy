@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    abstract class AccountList
+    public abstract class AccountList
     {
         public void Add(Account account)
         {

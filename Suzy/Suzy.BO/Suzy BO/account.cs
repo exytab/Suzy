@@ -11,8 +11,8 @@ namespace Suzy.BO
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class account
+
+    internal partial class account
     {
         public account()
         {

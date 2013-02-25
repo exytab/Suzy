@@ -12,7 +12,7 @@ namespace Suzy.BO
     using System;
     using System.Collections.Generic;
     
-    public partial class avatar
+    internal partial class avatar
     {
         public avatar()
         {
