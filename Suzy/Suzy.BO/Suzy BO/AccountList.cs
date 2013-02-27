@@ -22,9 +22,14 @@ namespace Suzy.BO
             using (OurDB db = new OurDB())
             {
                 db.Accounts.Add(_account);
+                db.SaveChanges();
             }
         }
 
+        /// <summary>
+        /// Повертає усіх користувачів з бази данних
+        /// </summary>
+        /// <returns>Усіх користувачів у вигляді списку</returns>
         public static List<Account> Get()
         {
             using (OurDB db = new OurDB())
