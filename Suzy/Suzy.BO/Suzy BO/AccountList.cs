@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    public static class AccountList
+   abstract class AccountList
     {
         public static void Add(Account account)
         {
@@ -24,6 +24,7 @@ namespace Suzy.BO
                 db.Accounts.Add(_account);
                 db.SaveChanges();
             }
+
         }
 
         /// <summary>
@@ -36,6 +37,7 @@ namespace Suzy.BO
             {
                 return db.Accounts.ToList().Select(item => new Account(item)).ToList();
             }
+
         }
 
     }
