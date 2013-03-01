@@ -22,14 +22,15 @@ namespace Suzy.BO
             {
                 db.Location_areas.Add(_location_area);
             }
-        }
 
+        }
         public static List<LocationArea> Get()
         {
             using (OurDB db = new OurDB())
             {
                 return db.Location_areas.ToList().Select(item => new LocationArea(item)).ToList();
             }
+
         }
 
     }

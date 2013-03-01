@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-   abstract class AccountList
+   public static class AccountList
     {
         public static void Add(Account account)
         {
@@ -27,10 +27,6 @@ namespace Suzy.BO
 
         }
 
-        /// <summary>
-        /// Повертає усіх користувачів з бази данних
-        /// </summary>
-        /// <returns>Усіх користувачів у вигляді списку</returns>
         public static List<Account> Get()
         {
             using (OurDB db = new OurDB())
