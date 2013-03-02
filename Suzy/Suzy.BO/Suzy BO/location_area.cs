@@ -11,8 +11,8 @@ namespace Suzy.BO
 {
     using System;
     using System.Collections.Generic;
-
-    internal partial class location_area
+    
+    public partial class location_area
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -23,5 +23,27 @@ namespace Suzy.BO
         public System.DateTime time_of_marking { get; set; }
     
         public virtual account account { get; set; }
+        
+        public override bool Equals(object obj)
+        {
+            if (obj is location_area)
+            {
+                location_area areaObj = obj as location_area;
+                if (areaObj == null)
+                    return false;
+                else if (this.name == areaObj.name
+                    && this.lattitude == areaObj.lattitude
+                    && this.longtitude == areaObj.longtitude
+                    && this.radius == areaObj.radius
+                    && this.id_account == areaObj.id_account
+                    && this.time_of_marking == areaObj.time_of_marking
+                    )
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
     }
 }
