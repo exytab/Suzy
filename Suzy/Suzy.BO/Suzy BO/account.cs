@@ -36,5 +36,29 @@ namespace Suzy.BO
         public virtual ICollection<subscriber> subscriber { get; set; }
         public virtual ICollection<location_area> location_area { get; set; }
         public virtual ICollection<subscriber> subscriber1 { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is account)
+            {
+                account accountObj = obj as account;
+                if (accountObj == null)
+                    return false;
+                else if (this.name == accountObj.name
+                    &&   this.surname == accountObj.surname
+                    &&   this.login == accountObj.login
+                    &&   this.password == accountObj.password
+                    &&   this.email == accountObj.email
+                    &&   this.id_avatar == accountObj.id_avatar
+                    &&   this.ban == accountObj.ban
+                    &&   this.admin == accountObj.admin
+                    )
+                    return true;
+                else
+                    return false;
+            }
+            else
+                return false;
+        }
     }
 }

@@ -47,5 +47,21 @@ namespace Suzy.BO
         {
             _account = new account();
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Account )
+            {
+                Account accountObj = obj as Account;
+                if (accountObj == null)
+                    return false;
+                else if (this._account == accountObj._account)
+                    return true;
+                else
+                    return false;
+            }
+            else 
+                return false;
+        }
     }
 }
