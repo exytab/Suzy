@@ -1,1 +1,9 @@
-2013/03/02-12:12:06.512 1294 Delete type=3 #1
+2013/03/02-13:50:15.997 1bfc Recovering log #3
+2013/03/02-13:50:15.997 1bfc Level-0 table #5: started
+2013/03/02-13:50:16.025 1bfc Level-0 table #5: 13248 bytes OK
+2013/03/02-13:50:16.026 1bfc Recovering log #6
+2013/03/02-13:50:16.026 1bfc Level-0 table #6: started
+2013/03/02-13:50:16.055 1bfc Level-0 table #6: 285 bytes OK
+2013/03/02-13:50:16.130 1bfc Delete type=0 #3
+2013/03/02-13:50:16.131 1bfc Delete type=0 #6
+2013/03/02-13:50:16.131 1bfc Delete type=3 #2
