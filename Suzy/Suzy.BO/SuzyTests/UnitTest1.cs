@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Suzy.BO;
 
-namespace SuzyTests
+namespace Suzy.Bo.Test
 {
 
     [TestClass]
@@ -27,22 +27,24 @@ namespace SuzyTests
         }
 
         [TestMethod]
-        public void TestAccountAreaEquals()
+        public void TestAccountEquals()
         {
             Account newAccount = new Account();
             newAccount.name = "Алекс";
             Account newAccount1 = new Account();
-            newAccount.name = "Алекс";
+            newAccount1.name = "Алекс";
             Assert.Equals(newAccount == newAccount1, newAccount.Equals(newAccount1));
 
         }
-        public void TestAccountAreaEquals()
+
+        [TestMethod]
+        public void TestLocaionAreaEquals()
         {
             LocationArea newlocation = new LocationArea();
             newlocation.name = "Киев";
-            LocationArea newlocation1 = new LocationArea();
-            newlocation.name = "Киев";
-            Assert.Equals(newlocation == newlocation1, newlocation.Equals(newlocation1));
+            LocationArea newlocationCopy = new LocationArea();
+            newlocationCopy.name = "Киев";
+            Assert.Equals(newlocation == newlocationCopy, newlocation.Equals(newlocationCopy));
         }
     }
 }

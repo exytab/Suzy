@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    class LocationArea
+    public class LocationArea
     {
         private location_area _location_area;
 
@@ -36,7 +36,7 @@ namespace Suzy.BO
         }
 
   
-        public LocationArea(location_area _Location_area)
+        internal LocationArea(location_area _Location_area)
         {
 			_location_area = _Location_area;
         }

@@ -1,3 +1,4 @@
 <Modules>
   <Module PersistentId="92295F81-BCF5-4C4A-A384-03EBFDFDEBF8" ModuleId="Suzy.BO" />
+  <Module PersistentId="F10D89BE-6CD6-4AFC-A009-0BBCA2821D09" ModuleId="SuzyTests" />
 </Modules>

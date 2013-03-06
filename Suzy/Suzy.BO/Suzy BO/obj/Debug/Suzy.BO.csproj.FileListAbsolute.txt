@@ -21,6 +21,5 @@ C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\bin\Debug\Suzy BO.dll
 C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\bin\Debug\Suzy BO.pdb
 C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\bin\Debug\EntityFramework.dll
 C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\bin\Debug\EntityFramework.xml
-C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\obj\Debug\Suzy.BO.csprojResolveAssemblyReference.cache
 C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\obj\Debug\Suzy BO.dll
 C:\Users\exy\Documents\GitHub\Suzy\Suzy\Suzy.BO\Suzy BO\obj\Debug\Suzy BO.pdb

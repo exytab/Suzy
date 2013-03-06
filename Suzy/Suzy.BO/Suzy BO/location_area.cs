@@ -12,7 +12,7 @@ namespace Suzy.BO
     using System;
     using System.Collections.Generic;
     
-    public partial class location_area
+    partial class location_area
     {
         public int id { get; set; }
         public string name { get; set; }
