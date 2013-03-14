@@ -233,7 +233,7 @@
 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
 
 <script type="text/javascript">
-    
+
 	$(document).ready(function() {
 		// Как только будет загружен API и готов DOM, выполняем инициализацию
 	    var myMap;
@@ -280,6 +280,7 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                 SetMyCoords,
+                displayError,
                 { enableHighAccuracy: true, timeout: timeoutTime, maximumAge: 0 }
                 );
             } else {
@@ -293,7 +294,18 @@
             myLocationPoint.removeAll();
             SetPlacement(myMap, myLatitude, myLongitude, "Red");
         }
+        function displayPosition(position) {
+            alert("Широта: " + position.coords.latitude + ", Долгота: " + position.coords.longitude);
+        }
+        function displayError(error) {
+            var errors = {
+                1: 'Нет прав доступа',
+                2: 'Местоположение невозможно определить',
+                3: 'Таймаут соединения'
+            };
+            alert("Ошибка: " + errors[error.code]);
+        }
 	});
-	
+
 </script>
 </body></html>
