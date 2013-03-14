@@ -233,19 +233,65 @@
 <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
 
 <script type="text/javascript">
+    
 	$(document).ready(function() {
 		// Как только будет загружен API и готов DOM, выполняем инициализацию
-		var myMap;
-        ymaps.ready(init);
-
+	    var myMap;
+	    var myLatitude, myLongitude;
+	    var myLocationPoint;
+	    ymaps.ready(init);
+        GetGeoLocation();
         function init () {
             // Создание экземпляра карты и его привязка к контейнеру с
             // заданным id ("map")
+            myLatitude = ymaps.geolocation.latitude;
+            myLongitude = ymaps.geolocation.longitude;
+            myLocationPoint = new ymaps.GeoObjectCollection();
             myMap = new ymaps.Map('big-map', {
-				center: [50.45, 30.49],
-				zoom: 11
+                center: [myLatitude, myLongitude],
+				zoom: 16
 			});
-		
+            myMap.controls.add(new ymaps.control.ZoomControl());
+            myMap.controls.add('typeSelector');
+            myMap.controls.add('zoomControl');
+            myMap.controls.add('trafficControl');
+            SetPlacement(myMap, myLatitude, myLongitude, "Blue")
+        }
+        function SetPlacement(myMap, Latitude, Longitude, Color) {
+            var presetStyle = "twirl#blueIcon";
+            if (Color == "Red") presetStyle = "twirl#redIcon";
+            myLocationPoint.add(
+                new ymaps.Placemark(
+                   [Latitude, Longitude],
+                   {
+                       iconContent: "Я"
+                   },
+                   {
+                       preset: presetStyle
+                   }
+                )
+            );
+            myMap.geoObjects.add(myLocationPoint);
+            myMap.panTo( [Latitude, Longitude] );
+        }
+        function GetGeoLocation()
+        {
+            var timeoutTime = 10*1000*1000;
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                SetMyCoords,
+                { enableHighAccuracy: true, timeout: timeoutTime, maximumAge: 0 }
+                );
+            } else {
+                alert("Geolocation API не поддерживается в вашем браузере");
+            }
+        }
+        function SetMyCoords(position)
+        {
+            myLatitude = position.coords.latitude;
+            myLongitude = position.coords.longitude;
+            myLocationPoint.removeAll();
+            SetPlacement(myMap, myLatitude, myLongitude, "Red");
         }
 	});
 
