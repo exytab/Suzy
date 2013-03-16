@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
+    /// <summary>
+    /// Данный класс создает контейнер для оперировании с объектами типа LocalArea
+    /// </summary>
     public static class LocationList
     {
+
+        /// <summary>
+        /// Метод добавляет в базу данных объект типа LocationArea
+        /// </summary>
+        /// <param name="location_area">Объект типа LocationArea</param>
         public static void Add(LocationArea location_area)
         {
             location_area _location_area = new location_area();
@@ -24,6 +32,10 @@ namespace Suzy.BO
             }
 
         }
+        /// <summary>
+        /// Данный метод создает из базы данных список локаций
+        /// </summary>
+        /// <returns>Возвращаем контейнер Локаций с БД</returns>
         public static List<LocationArea> Get()
         {
             using (OurDB db = new OurDB())

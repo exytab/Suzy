@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
+    /// <summary>
+    /// Этот класс работает с Локациями
+    /// </summary>
     public class LocationArea
     {
         private location_area _location_area;
@@ -17,6 +20,10 @@ namespace Suzy.BO
         public float radius { get { return _location_area.radius; } set { _location_area.radius = value; } }
         public int id_account { get { return _location_area.id_account; } private set { _location_area.id_account = value; } }
         public DateTime time_of_marking { get { return _location_area.time_of_marking; } set { _location_area.time_of_marking = value; } }
+
+        /// <summary>
+        /// Этот метод сохраняет нашу Локацию в БД
+        /// </summary>
 
         public void Save()
         {
@@ -35,16 +42,26 @@ namespace Suzy.BO
 
         }
 
-  
         internal LocationArea(location_area _Location_area)
         {
 			_location_area = _Location_area;
         }
 
+        /// <summary>
+        /// Это наш конструктор для LocationArea без параметров
+        /// </summary>
+
         public LocationArea()
         {
 			_location_area = new location_area();
         }
+
+        /// <summary>
+        /// Данный метод проверяет сравнивает два объекта типа LocationArea
+        /// </summary>
+        /// <param name="obj">Передается объект, с которым будем работать</param>
+        /// <returns>Возращает значение false, если объекты не совпадают</returns>
+
         public override bool Equals(object obj)
         {
             if (obj is LocationArea)

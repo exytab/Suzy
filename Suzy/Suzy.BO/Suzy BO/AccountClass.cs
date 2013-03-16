@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
+    /// <summary>
+    /// Этот класс работает с Аккаунтами 
+    /// </summary>
+
     public class Account
     {
         private account _account;
@@ -20,6 +24,10 @@ namespace Suzy.BO
         public bool ban { get { return _account.ban; } set { _account.ban = value; } }
         public bool admin { get { return _account.admin; } set { _account.admin = value; } }
 
+        /// <summary>
+        /// Этот метод сохраняет наш Account в БД
+        /// </summary>
+        
         public void Save()
         {
             using (OurDB db = new OurDB())
@@ -42,12 +50,19 @@ namespace Suzy.BO
         {
             _account = _Account;
         }
-
+        /// <summary>
+        /// Это наш конструктор для аккаунтов без параметров
+        /// </summary>
         public Account()
         {
             _account = new account();
         }
 
+        /// <summary>
+        /// Данный метод проверяет сравнивает два объекта типа  Account 
+        /// </summary>
+        /// <param name="obj">Передается объект, с которым будем работать</param>
+        /// <returns>Возращает значение false, если объекты не совпадают</returns>
         public override bool Equals(object obj)
         {
             if (obj is Account )
