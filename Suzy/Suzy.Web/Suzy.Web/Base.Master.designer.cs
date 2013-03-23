@@ -13,13 +13,22 @@ namespace Suzy.Web {
     public partial class Base {
         
         /// <summary>
-        /// TabsContent элемент управления.
+        /// SignForm элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder TabsContent;
+        protected global::Suzy.Web.SignForm SignForm;
+        
+        /// <summary>
+        /// Tabs элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::Suzy.Web.Tabs Tabs;
         
         /// <summary>
         /// PageContent элемент управления.
@@ -31,13 +40,13 @@ namespace Suzy.Web {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder PageContent;
         
         /// <summary>
-        /// FooterContent элемент управления.
+        /// Footer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder FooterContent;
+        protected global::Suzy.Web.Footer Footer;
         
         /// <summary>
         /// JsContent элемент управления.

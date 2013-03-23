@@ -1,4 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="Suzy.Web.Base" %>
+
+<%@ Register Src="~/SignForm.ascx" TagPrefix="uc1" TagName="SignForm" %>
+<%@ Register Src="~/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+<%@ Register Src="~/Tabs.ascx" TagPrefix="uc1" TagName="Tabs" %>
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -28,13 +35,15 @@
 		  	<div class="span3" >
 				<h1 >Suzy</h1>
 		  	</div>
-    
+   
+        <uc1:SignForm runat="server" id="SignForm" />
+             
         </div>
 	</div>
-
-    <asp:ContentPlaceHolder ID="TabsContent" runat="server" />
+   
+    <uc1:Tabs runat="server" id="Tabs" />
     <asp:ContentPlaceHolder ID="PageContent" runat="server" />
-    <asp:ContentPlaceHolder ID="FooterContent" runat="server" />
+    <uc1:Footer runat="server" id="Footer" />
 
     <!-- Le javascript ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
