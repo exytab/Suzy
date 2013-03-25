@@ -17,10 +17,27 @@ namespace Suzy.Web.ajax
     public class Common : System.Web.Services.WebService
     {
 
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
         public string HelloWorld()
         {
             return "Привет всем!";
+            Session.Add("id", 4);
+        }
+
+        [WebMethod]
+        public string Login(string name, string password)
+        {
+            //Example http://weblogs.asp.net/jalpeshpvadgama/archive/2010/08/29/calling-an-asp-net-web-service-from-jquery.aspx
+            string result = string.Empty;
+            try
+            {
+                
+            }
+            catch(Exception ex)
+            {
+                
+            }
+            return result;
         }
     }
 }
