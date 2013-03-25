@@ -6,21 +6,12 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    /// <summary>
-    /// Данный класс создает контейнер для оперировании с объектами типа Account
-    /// </summary>
    public static class AccountList
     {
-        /// <summary>
-        /// Метод добавляет в базу данных объект типа Account
-        /// </summary>
-        /// <param name="location_area">Объект типа Account</param>
         public static void Add(Account account)
         {
             account _account = new account();
             _account.name = account.name;
-            _account.surname = account.surname;
-            _account.login = account.login;
             _account.password = account.password;
             _account.email = account.email;
             _account.id_avatar = account.id_avatar;
@@ -34,10 +25,6 @@ namespace Suzy.BO
 
         }
 
-       /// <summary>
-       /// Данный метод создает из базы данных список аккаунтов
-       /// </summary>
-       /// <returns>Возвращаем контейнер Аккаунтов с БД</returns>
         public static List<Account> Get()
         {
             using (OurDB db = new OurDB())

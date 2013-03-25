@@ -6,36 +6,23 @@ using System.Threading.Tasks;
 
 namespace Suzy.BO
 {
-    /// <summary>
-    /// Этот класс работает с Аккаунтами 
-    /// </summary>
-
-    public class Account
+    class Account
     {
         private account _account;
 
         public int id { get { return _account.id; } private set { _account.id = value; } }
         public string name { get { return _account.name; } set { _account.name = value; } }
-        public string surname { get { return _account.surname; } set { _account.surname = value; } }
-        public string login { get { return _account.login; } set { _account.login = value; } }
         public string password { get { return _account.password; } set { _account.password = value; } }
         public string email { get { return _account.email; } set { _account.email = value; } }
         public int id_avatar { get { return _account.id_avatar; } set { _account.id_avatar = value; } }
         public bool ban { get { return _account.ban; } set { _account.ban = value; } }
         public bool admin { get { return _account.admin; } set { _account.admin = value; } }
-
-        /// <summary>
-        /// Этот метод сохраняет наш Account в БД
-        /// </summary>
-        
         public void Save()
         {
             using (OurDB db = new OurDB())
             {
                 var account = db.Accounts.Find(id);
                 account.name = this.name;
-                account.surname = this.surname;
-                account.login = this.login;
                 account.password = this.password;
                 account.email = this.email;
                 account.id_avatar = this.id_avatar;
@@ -43,29 +30,24 @@ namespace Suzy.BO
                 account.admin = this.admin;
                 db.SaveChanges();
             }
+
         }
 
 
-        internal Account(account _Account)
+
+
+        public Account(account _Account)
         {
             _account = _Account;
         }
-        /// <summary>
-        /// Это наш конструктор для аккаунтов без параметров
-        /// </summary>
+
         public Account()
         {
             _account = new account();
         }
-
-        /// <summary>
-        /// Данный метод проверяет сравнивает два объекта типа  Account 
-        /// </summary>
-        /// <param name="obj">Передается объект, с которым будем работать</param>
-        /// <returns>Возращает значение false, если объекты не совпадают</returns>
         public override bool Equals(object obj)
         {
-            if (obj is Account )
+            if (obj is Account)
             {
                 Account accountObj = obj as Account;
                 if (accountObj == null)
@@ -75,8 +57,10 @@ namespace Suzy.BO
                 else
                     return false;
             }
-            else 
+            else
                 return false;
         }
+
+
     }
 }
