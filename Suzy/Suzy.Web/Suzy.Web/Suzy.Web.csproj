@@ -114,6 +114,7 @@
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionManager.cs" />
     <Compile Include="SignForm.ascx.cs">
       <DependentUpon>SignForm.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using Suzy.BO;
 
 namespace Suzy.Web.ajax
 {
@@ -12,7 +13,6 @@ namespace Suzy.Web.ajax
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
-    // Чтобы разрешить вызывать веб-службу из скрипта с помощью ASP.NET AJAX, раскомментируйте следующую строку. 
     [System.Web.Script.Services.ScriptService]
     public class Common : System.Web.Services.WebService
     {
@@ -21,17 +21,37 @@ namespace Suzy.Web.ajax
         public string HelloWorld()
         {
             return "Привет всем!";
-            Session.Add("id", 4);
         }
 
-        [WebMethod]
-        public string Login(string name, string password)
+        [WebMethod(EnableSession = true)]
+        public string Login(string email, string password)
         {
             //Example http://weblogs.asp.net/jalpeshpvadgama/archive/2010/08/29/calling-an-asp-net-web-service-from-jquery.aspx
             string result = string.Empty;
             try
             {
-                
+                Account account = AccountList.Get(email);
+                if (account != null)
+                {
+                    if(password == account.password)
+                    {
+                        SessionManager.Set(account.id); 
+                    }
+                    else
+                    {
+                        result = "Wrong email or password";
+                    }
+                }
+                else
+                {
+                    Account newAccount = new Account();
+                    newAccount.email = email;
+                    newAccount.password = password;
+                    AccountList.Add(newAccount);
+
+                    result = "Registered" + newAccount.id;
+                    SessionManager.Set(newAccount.id); 
+                }
             }
             catch(Exception ex)
             {
