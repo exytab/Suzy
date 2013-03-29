@@ -13,14 +13,6 @@ namespace Suzy.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             if (Session["id"] == null) // if not login
-             {
-                 
-             } 
-             else
-             {
-                 
-             }
         }
     }
 }

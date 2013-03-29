@@ -5,7 +5,6 @@
 <%@ Register Src="~/Tabs.ascx" TagPrefix="uc1" TagName="Tabs" %>
 
 
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -66,7 +65,15 @@
  
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
     
+    <script type="text/javascript" src="/js/Suzy.Login.js?v=4" ></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".login-form").suzyLogin();
+        });
+    </script>
     <asp:ContentPlaceHolder ID="JsContent" runat="server" />
-
+    
+    
 </body>
 </html>

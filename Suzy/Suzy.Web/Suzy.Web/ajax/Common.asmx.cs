@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI;
 using Suzy.BO;
 
 namespace Suzy.Web.ajax
@@ -35,11 +36,18 @@ namespace Suzy.Web.ajax
                 {
                     if(password == account.password)
                     {
-                        SessionManager.Set(account.id); 
+                        SessionManager.Set(account.id);
+                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                        System.IO.StringWriter stWriter = new System.IO.StringWriter(sb);
+                        System.Web.UI.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(stWriter);
+                        Page page = new Page();
+                        SignForm signForm = (SignForm)page.LoadControl("SignForm.ascx");
+                        signForm.RenderControl(htmlWriter);
+                        result = "replace:" + sb.ToString();
                     }
                     else
                     {
-                        result = "Wrong email or password";
+                        result = "alert:Wrong email or password";
                     }
                 }
                 else
@@ -49,8 +57,15 @@ namespace Suzy.Web.ajax
                     newAccount.password = password;
                     AccountList.Add(newAccount);
 
-                    result = "Registered" + newAccount.id;
-                    SessionManager.Set(newAccount.id); 
+                    SessionManager.Set(newAccount.id);
+
+                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                    System.IO.StringWriter stWriter = new System.IO.StringWriter(sb);
+                    System.Web.UI.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(stWriter);
+                    Page page = new Page();
+                    SignForm signForm = (SignForm)page.LoadControl("SignForm.ascx");
+                    signForm.RenderControl(htmlWriter);
+                    result = "replace:" + sb.ToString();
                 }
             }
             catch(Exception ex)
