@@ -37,8 +37,6 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="surname" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="login" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="id_avatar" Type="int" Nullable="false" />
@@ -137,7 +135,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="CustomSuzy1" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="CustomSuzyEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="account" EntityType="CustomSuzyModel.account" />
           <EntitySet Name="avatar" EntityType="CustomSuzyModel.avatar" />
           <EntitySet Name="location_area" EntityType="CustomSuzyModel.location_area" />
@@ -169,8 +167,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="id_avatar" Type="Int32" Nullable="false" />
@@ -279,14 +275,12 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CustomSuzyModelStoreContainer" CdmEntityContainer="CustomSuzy1">
+        <EntityContainerMapping StorageEntityContainer="CustomSuzyModelStoreContainer" CdmEntityContainer="CustomSuzyEntities">
           <EntitySetMapping Name="account">
             <EntityTypeMapping TypeName="CustomSuzyModel.account">
               <MappingFragment StoreEntitySet="account">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="id_avatar" ColumnName="id_avatar" />
