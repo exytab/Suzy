@@ -78,14 +78,15 @@ namespace Suzy.BO
         public static Account Get(int id)
         {
             Account result = null;
-            using (OurDB db = new OurDB())
-            {
-                var accounts = from account in db.Accounts
-                               where account.id == id
-                               select account;
-                if (accounts.Any())
-                    return new Account(accounts.First());
-            }
+            if(id > 0)
+                using (OurDB db = new OurDB())
+                {
+                    var accounts = from account in db.Accounts
+                                   where account.id == id
+                                   select account;
+                    if (accounts.Any())
+                        return new Account(accounts.First());
+                }
             return result;
         }
     }

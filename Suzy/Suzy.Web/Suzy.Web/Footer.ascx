@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Footer.ascx.cs" Inherits="Suzy.Web.Footer" %>
 <!--FOOTER-->
-<div class="container" style="width:100%;">
+<div class="container navbar-fixed-bottom" style="width:100%;">
 	<div class="well" style="padding: 8px 0; height: 230px; margin-bottom: 0px;">
 		<div class="container">
 			<div class="row">

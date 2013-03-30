@@ -5,7 +5,7 @@
 	  <div  id="big-map" style="height: 400px; width: 100%;"></div>
 	</div>
 	<!--BODY-->
-	<div class="container" style="float: bottom;">
+	<%--<div class="container" style="float: bottom;">
 		<div class="row">
 			<div class="span4">
 			  <h3>Typographic scale</h3>
@@ -25,7 +25,7 @@
 			  
 			</div>
 	  </div>
-	</div>
+	</div>--%>
 </asp:Content>
 <asp:Content ID="ContentJS1" ContentPlaceHolderID="JsContent" runat="server">
     <script type="text/javascript">

@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using Suzy.BO;
+using System.Text;
+using System.IO;
 
 namespace Suzy.Web.ajax
 {
@@ -36,14 +38,9 @@ namespace Suzy.Web.ajax
                 {
                     if(password == account.password)
                     {
-                        SessionManager.Set(account.id);
-                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                        System.IO.StringWriter stWriter = new System.IO.StringWriter(sb);
-                        System.Web.UI.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(stWriter);
-                        Page page = new Page();
-                        SignForm signForm = (SignForm)page.LoadControl("SignForm.ascx");
-                        signForm.RenderControl(htmlWriter);
-                        result = "replace:" + sb.ToString();
+                        SessionManager.SetAccount(account);
+
+                        result = string.Format("replace:{0}", Helper.UserControlToString("SignForm.ascx"));
                     }
                     else
                     {
@@ -57,15 +54,9 @@ namespace Suzy.Web.ajax
                     newAccount.password = password;
                     AccountList.Add(newAccount);
 
-                    SessionManager.Set(newAccount.id);
+                    SessionManager.SetAccount(newAccount);
 
-                    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                    System.IO.StringWriter stWriter = new System.IO.StringWriter(sb);
-                    System.Web.UI.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(stWriter);
-                    Page page = new Page();
-                    SignForm signForm = (SignForm)page.LoadControl("SignForm.ascx");
-                    signForm.RenderControl(htmlWriter);
-                    result = "replace:" + sb.ToString();
+                    result = string.Format("replace:{0}", Helper.UserControlToString("SignForm.ascx"));
                 }
             }
             catch(Exception ex)

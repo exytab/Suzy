@@ -13,8 +13,11 @@ namespace Suzy.BO
     {
         private account _account;
 
-        public int id { get { return _account.id; }
-            internal set { _account.id = value; } }
+        public int id 
+        { 
+            get { return _account.id; }
+            internal set { _account.id = value; } 
+        }
         public string name { get { return _account.name; } set { _account.name = value; } }
         public string password { get { return _account.password; } set { _account.password = value; } }
         public string email { get { return _account.email; } set { _account.email = value; } }

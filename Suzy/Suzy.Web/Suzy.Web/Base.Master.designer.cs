@@ -22,15 +22,6 @@ namespace Suzy.Web {
         protected global::Suzy.Web.SignForm SignForm;
         
         /// <summary>
-        /// Tabs элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::Suzy.Web.Tabs Tabs;
-        
-        /// <summary>
         /// PageContent элемент управления.
         /// </summary>
         /// <remarks>
