@@ -4,14 +4,30 @@
     <% if (SessionManager.IsAuthorization())
        { %>
         <div align="right" >
-          <ul class="thumbnails" style="float:right">
+          <%--<ul class="thumbnails" style="float:right">
+            <li class="span3 tile tile-double tile-teal">
+                <a href="/Profile.aspx" >
+                    <h3 class="tile-text"><%= AccountList.Get((int) SessionManager.Get()).email %></h3>
+                </a>
+            </li>
              <li class="span3 tile ">
-               <a href="#" >
+               <a href="/Profile.aspx" >
                  <img src="http://cs419718.vk.me/v419718749/3b3b/HLAQDGdCRAk.jpg">
-                 <h5><%= AccountList.Get((int) SessionManager.Get()).email %></h5>
                </a>    
              </li>
-          </ul>
+          </ul>--%>
+            <div class="container">
+                <div class="span6">
+                    <a href="/Profile.aspx" >
+                        <img src="http://cs419718.vk.me/v419718749/3b3b/HLAQDGdCRAk.jpg" style="height: 60px;">
+                    </a>     
+                </div>
+                <div class="span2">
+                    <a href="/Profile.aspx"  style="text-decoration: none;">
+                        <h3 class="tile-text"><%= AccountList.Get((int) SessionManager.Get()).email %></h3>             
+                    </a>
+                </div>
+            </div>
         </div>
     <% } 
        else

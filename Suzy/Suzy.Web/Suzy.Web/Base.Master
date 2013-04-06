@@ -32,7 +32,9 @@
 	<div class="container" style="height: 110px">
 		<div class="row" style="height: 110px">
 		  	<div class="span3" >
-				<h1 >Suzy</h1>
+		  	    <a href="/" style="text-decoration: none;">
+				    <h1 >Suzy</h1>
+                </a>
 		  	</div>
    
         <uc1:SignForm runat="server" id="SignForm" />
@@ -65,7 +67,7 @@
  
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
     
-    <script type="text/javascript" src="/js/Suzy.Login.js?v=4" ></script>
+    <script type="text/javascript" src="/js/Suzy.Login.js?v=5" ></script>
     
     <script type="text/javascript">
         $(document).ready(function() {
