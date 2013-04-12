@@ -83,6 +83,7 @@
     <Content Include="js\jquery.validate.js" />
     <Content Include="js\jquery.validate.unobtrusive.js" />
     <Content Include="js\Suzy.Login.js" />
+    <Content Include="js\Suzy.Map.js" />
     <Content Include="js\talkslab.png" />
     <Content Include="js\twittertile.png" />
     <Content Include="Profile.aspx" />
