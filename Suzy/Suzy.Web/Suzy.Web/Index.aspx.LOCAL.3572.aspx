@@ -30,9 +30,19 @@
 <asp:Content ID="ContentJS1" ContentPlaceHolderID="JsContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
+            // Как только будет загружен API и готов DOM, выполняем инициализацию
+            var myMap;
+            ymaps.ready(init);
 
-            $("#big-map").suzyMap();
+            function init() {
+                // Создание экземпляра карты и его привязка к контейнеру с
+                // заданным id ("map")
+                myMap = new ymaps.Map('big-map', {
+                    center: [50.45, 30.49],
+                    zoom: 11
+                });
 
+            }
         });
 
 </script>

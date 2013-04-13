@@ -18,12 +18,12 @@
           </ul>--%>
             <div class="container">
                 <div class="span6">
-                    <a href="/Profile.aspx" >
+                    <a href="/profile" >
                         <img src="http://cs419718.vk.me/v419718749/3b3b/HLAQDGdCRAk.jpg" style="height: 60px;">
                     </a>     
                 </div>
                 <div class="span2">
-                    <a href="/Profile.aspx"  style="text-decoration: none;">
+                    <a href="/profile"  style="text-decoration: none;">
                         <h3 class="tile-text"><%= AccountList.Get((int) SessionManager.Get()).email %></h3>             
                     </a>
                 </div>

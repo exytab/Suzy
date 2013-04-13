@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Suzy.Web.Index" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Suzy.Web.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PageContent" runat="server">
     <!--MAP-->
 	<div class="row" style="padding-top: 0px">
@@ -32,7 +32,7 @@
         $(document).ready(function () {
 
             $("#big-map").suzyMap();
-
+ 
         });
 
 </script>
