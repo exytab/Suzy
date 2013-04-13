@@ -1,117 +1,25 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Footer.ascx.cs" Inherits="Suzy.Web.Footer" %>
 <!--FOOTER-->
 <div class="container navbar-fixed-bottom" style="width:100%;">
-	<div class="well" style="padding: 8px 0; height: 230px; margin-bottom: 0px;">
-		<div class="container">
-			<div class="row">
-				<div class="span4">
-					<ul class="nav nav-list">
-						<li class="nav-header">Other sites</li>
-						<li class="active">
-							<a href="#">
-							<i class="icon-cog"></i>
-							Google
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Yandex
-							</a>
-						</li>
-						<li >
-							<a href="#">
-							<i class="icon-cog"></i>
-							Bing
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Yahoo
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Help
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="span4">
-					<ul class="nav nav-list">
-						<li class="nav-header">Info Pages</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Home
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Library
-							</a>
-						</li>
-						<li class="nav-header">User links</li>
-						<li >
-							<a href="#">
-							<i class="icon-cog"></i>
-							Profile
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Locations
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							FAQ
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="span4">
-					<ul class="nav nav-list">
-						<li class="nav-header">Beneficials</li>
-						<li >
-							<a href="#">
-							<i class="icon-cog"></i>
-							Thanks from users
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Clients
-							</a>
-						</li>
-						<li class="nav-header">About company</li>
-						<li >
-							<a href="#">
-							<i class="icon-cog"></i>
-							People
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Objectives
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="icon-cog"></i>
-							Contacts
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+	<div class="well" style="padding: 8px 0; margin-bottom: 0px;">
+		<div class="container" style="text-align: right;">
+            Designed by <a href="http://talkslab.github.io/metro-bootstrap/index.html">metro</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>
+		    <br />
+            Developed by 
+            <a href="https://github.com/ShitHappens">ShitHappens</a>,
+            <a href="https://github.com/dreamminister">dreamminister</a>,
+            <a href="https://github.com/Lenchi"> Lenchi </a>,
+            <a href="https://github.com/koroleva">koroleva</a>,
+            <a href="https://github.com/yatsykR">yatsykR</a>,
+            <a href="https://github.com/XCellent">XCellent</a> and 
+            <a href="https://github.com/exytab">exytab</a>
+		    <br />
+            Used by 
+            <a href="http://asp.net/">Asp.Net</a>,
+            <a href="http://api.yandex.com/maps/">Yandex.Maps API</a> and
+            <a href="http://jquery.com/">jQuery</a>
+		    <br />
+            Suzy © 2013 
 		</div>
 	</div>
 </div>
