@@ -5,10 +5,12 @@
 		<div class="container">
 			<ul class="nav">
 			    <li class="active">
-				    <a href="#">Home</a>
+				    <a href="/">Home</a>
 			    </li>
 			    <li class="divider-vertical"></li>
-			    <li><a href="/Profile.aspx">Profile</a></li>
+			    <li>
+			        <a href="/profile">Profile</a>
+			    </li>
 <%--			    <li class="divider-vertical"></li>
 			    <li><a href="#">Link 2</a></li>
 			    <li class="divider-vertical"></li>
