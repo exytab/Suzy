@@ -29,6 +29,7 @@ namespace Suzy.BO
             using (OurDB db = new OurDB())
             {
                 db.Location_areas.Add(_location_area);
+                db.SaveChanges();
             }
 
         }

@@ -1,9 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Suzy.Web.Index" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PageContent" runat="server">
     <!--MAP-->
-	<div class="row" style="padding-top: 0px">
-	  <div  id="big-map" style="height: 400px; width: 100%;"></div>
-	</div>
+    <div class="container-fluid" style="line-height: 0px;">
+	    <div class="row" style="padding-top: 0px; margin-left: -20px;
+margin-right: -20px;">
+	      <div  id="big-map" style="height: 405px; width: 100%;"></div>
+	    </div>
+    </div>
 	<!--BODY-->
 	<%--<div class="container" style="float: bottom;">
 		<div class="row">

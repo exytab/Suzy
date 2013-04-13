@@ -13,12 +13,12 @@ namespace Suzy.BO
     {
         private location_area _location_area;
 
-        public int id { get{ return _location_area.id;} set { _location_area.id = value;} }
+        public int id { get { return _location_area.id; } private set { _location_area.id = value; } }
         public string name { get { return _location_area.name; } set { _location_area.name = value; } }
         public float lattitude { get { return _location_area.lattitude; } set { _location_area.lattitude = value; } }
         public float longtitude { get { return _location_area.longtitude; } set { _location_area.longtitude = value; } }
         public float radius { get { return _location_area.radius; } set { _location_area.radius = value; } }
-        public int id_account { get { return _location_area.id_account; } private set { _location_area.id_account = value; } }
+        public int id_account { get { return _location_area.id_account; }  set { _location_area.id_account = value; } }
         public DateTime time_of_marking { get { return _location_area.time_of_marking; } set { _location_area.time_of_marking = value; } }
 
         /// <summary>

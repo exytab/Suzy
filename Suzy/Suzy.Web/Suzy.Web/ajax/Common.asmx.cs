@@ -65,5 +65,30 @@ namespace Suzy.Web.ajax
             }
             return result;
         }
+
+        [WebMethod(EnableSession = true)]
+        public string SavePosition(float latitude, float longitude, float radius)
+        {
+            string result = string.Empty;
+            try
+            {
+                if(SessionManager.IsAuthorization())
+                {
+                    LocationArea la = new LocationArea();
+                    la.id_account = (int)SessionManager.Get();
+                    la.lattitude = latitude;
+                    la.longtitude = longitude;
+                    la.radius = radius;
+                    la.time_of_marking = DateTime.Now;
+                    
+                    LocationList.Add(la);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
     }
 }
