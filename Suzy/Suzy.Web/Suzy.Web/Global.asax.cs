@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Routing;
@@ -13,6 +14,7 @@ namespace Suzy.Web
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            Suzy.BO.Helper.Init();
             RegisterRoutes(RouteTable.Routes);
         }
 

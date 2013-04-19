@@ -11,8 +11,8 @@ namespace Suzy.BO
 {
     using System;
     using System.Collections.Generic;
-
-    internal partial class subscriber
+    
+    public partial class subscriber
     {
         public int id { get; set; }
         public int id_subscriber { get; set; }

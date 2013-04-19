@@ -13,10 +13,10 @@ namespace Suzy.BO
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    internal partial class CustomSuzy1 : DbContext
+    public partial class CustomSuzyEntities : DbContext
     {
-        public CustomSuzy1()
-            : base("name=CustomSuzy1")
+        public CustomSuzyEntities()
+            : base("name=CustomSuzyEntities")
         {
         }
     
@@ -24,10 +24,10 @@ namespace Suzy.BO
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        internal DbSet<account> account { get; set; }
-        internal DbSet<avatar> avatar { get; set; }
-        internal DbSet<location_area> location_area { get; set; }
-        internal DbSet<subscriber> subscriber { get; set; }
+    
+        public DbSet<account> accounts { get; set; }
+        public DbSet<avatar> avatars { get; set; }
+        public DbSet<location_area> location_area { get; set; }
+        public DbSet<subscriber> subscribers { get; set; }
     }
 }

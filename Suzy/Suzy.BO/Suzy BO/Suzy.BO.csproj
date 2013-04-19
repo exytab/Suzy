@@ -62,67 +62,66 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="account.cs">
-      <DependentUpon>ModelSuzyedmx.tt</DependentUpon>
+      <DependentUpon>SuzyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AccountClass.cs" />
     <Compile Include="AccountList.cs" />
     <Compile Include="avatar.cs">
-      <DependentUpon>ModelSuzyedmx.tt</DependentUpon>
+      <DependentUpon>SuzyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="LocationArea.cs" />
     <Compile Include="LocationList.cs" />
     <Compile Include="location_area.cs">
-      <DependentUpon>ModelSuzyedmx.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSuzyedmx.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSuzyedmx.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSuzyedmx.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSuzyedmx.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelSuzyedmx.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelSuzyedmx.edmx</DependentUpon>
+      <DependentUpon>SuzyModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OurDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="subscriber.cs">
-      <DependentUpon>ModelSuzyedmx.tt</DependentUpon>
+      <DependentUpon>SuzyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuzyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuzyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuzyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuzyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SuzyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuzyModel.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="ModelSuzyedmx.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelSuzyedmx.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModelSuzyedmx.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSuzyedmx.edmx</DependentUpon>
-      <LastGenOutput>ModelSuzyedmx.Context.cs</LastGenOutput>
-    </None>
-    <None Include="ModelSuzyedmx.edmx.diagram">
-      <DependentUpon>ModelSuzyedmx.edmx</DependentUpon>
-    </None>
-    <None Include="ModelSuzyedmx.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelSuzyedmx.edmx</DependentUpon>
-      <LastGenOutput>ModelSuzyedmx.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
+    <EntityDeploy Include="SuzyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SuzyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SuzyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuzyModel.edmx</DependentUpon>
+      <LastGenOutput>SuzyModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SuzyModel.edmx.diagram">
+      <DependentUpon>SuzyModel.edmx</DependentUpon>
+    </None>
+    <None Include="SuzyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SuzyModel.edmx</DependentUpon>
+      <LastGenOutput>SuzyModel.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CustomSuzy.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="CustomSuzy.sdf" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

@@ -12,18 +12,18 @@ namespace Suzy.BO
     using System;
     using System.Collections.Generic;
     
-    internal partial class avatar
+    public partial class avatar
     {
         public avatar()
         {
-            this.account = new HashSet<account>();
-            this.account1 = new HashSet<account>();
+            this.accounts = new HashSet<account>();
+            this.accounts1 = new HashSet<account>();
         }
     
         public int id { get; set; }
         public string avatar_src { get; set; }
     
-        public virtual ICollection<account> account { get; set; }
-        public virtual ICollection<account> account1 { get; set; }
+        public virtual ICollection<account> accounts { get; set; }
+        public virtual ICollection<account> accounts1 { get; set; }
     }
 }

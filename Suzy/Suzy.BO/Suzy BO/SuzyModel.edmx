@@ -4,29 +4,29 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CustomSuzyModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="CustomSuzyModelStoreContainer">
-          <EntitySet Name="account" EntityType="CustomSuzyModel.Store.account" store:Type="Tables" />
-          <EntitySet Name="avatar" EntityType="CustomSuzyModel.Store.avatar" store:Type="Tables" />
-          <EntitySet Name="location_area" EntityType="CustomSuzyModel.Store.location_area" store:Type="Tables" />
-          <EntitySet Name="subscriber" EntityType="CustomSuzyModel.Store.subscriber" store:Type="Tables" />
-          <AssociationSet Name="FC_account_avatar" Association="CustomSuzyModel.Store.FC_account_avatar">
+      <Schema Namespace="Хранилище CustomSuzyModel" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="Хранилище CustomSuzyModelContainer">
+          <EntitySet Name="account" EntityType="Хранилище CustomSuzyModel.account" store:Type="Tables" />
+          <EntitySet Name="avatar" EntityType="Хранилище CustomSuzyModel.avatar" store:Type="Tables" />
+          <EntitySet Name="location_area" EntityType="Хранилище CustomSuzyModel.location_area" store:Type="Tables" />
+          <EntitySet Name="subscriber" EntityType="Хранилище CustomSuzyModel.subscriber" store:Type="Tables" />
+          <AssociationSet Name="FC_account_avatar" Association="Хранилище CustomSuzyModel.FC_account_avatar">
             <End Role="avatar" EntitySet="avatar" />
             <End Role="account" EntitySet="account" />
           </AssociationSet>
-          <AssociationSet Name="FK_account_avatar" Association="CustomSuzyModel.Store.FK_account_avatar">
+          <AssociationSet Name="FK_account_avatar" Association="Хранилище CustomSuzyModel.FK_account_avatar">
             <End Role="avatar" EntitySet="avatar" />
             <End Role="account" EntitySet="account" />
           </AssociationSet>
-          <AssociationSet Name="FK_account_subscriber" Association="CustomSuzyModel.Store.FK_account_subscriber">
+          <AssociationSet Name="FK_account_subscriber" Association="Хранилище CustomSuzyModel.FK_account_subscriber">
             <End Role="account" EntitySet="account" />
             <End Role="subscriber" EntitySet="subscriber" />
           </AssociationSet>
-          <AssociationSet Name="FK_area_account" Association="CustomSuzyModel.Store.FK_area_account">
+          <AssociationSet Name="FK_area_account" Association="Хранилище CustomSuzyModel.FK_area_account">
             <End Role="account" EntitySet="account" />
             <End Role="location_area" EntitySet="location_area" />
           </AssociationSet>
-          <AssociationSet Name="FK_leader_account" Association="CustomSuzyModel.Store.FK_leader_account">
+          <AssociationSet Name="FK_leader_account" Association="Хранилище CustomSuzyModel.FK_leader_account">
             <End Role="account" EntitySet="account" />
             <End Role="subscriber" EntitySet="subscriber" />
           </AssociationSet>
@@ -71,8 +71,8 @@
           <Property Name="id_leader" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FC_account_avatar">
-          <End Role="avatar" Type="CustomSuzyModel.Store.avatar" Multiplicity="1" />
-          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="*" />
+          <End Role="avatar" Type="Хранилище CustomSuzyModel.avatar" Multiplicity="1" />
+          <End Role="account" Type="Хранилище CustomSuzyModel.account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="avatar">
               <PropertyRef Name="id" />
@@ -83,8 +83,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_account_avatar">
-          <End Role="avatar" Type="CustomSuzyModel.Store.avatar" Multiplicity="1" />
-          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="*" />
+          <End Role="avatar" Type="Хранилище CustomSuzyModel.avatar" Multiplicity="1" />
+          <End Role="account" Type="Хранилище CustomSuzyModel.account" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="avatar">
               <PropertyRef Name="id" />
@@ -95,8 +95,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_account_subscriber">
-          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
-          <End Role="subscriber" Type="CustomSuzyModel.Store.subscriber" Multiplicity="*" />
+          <End Role="account" Type="Хранилище CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="subscriber" Type="Хранилище CustomSuzyModel.subscriber" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="account">
               <PropertyRef Name="id" />
@@ -107,8 +107,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_area_account">
-          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
-          <End Role="location_area" Type="CustomSuzyModel.Store.location_area" Multiplicity="*" />
+          <End Role="account" Type="Хранилище CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="location_area" Type="Хранилище CustomSuzyModel.location_area" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="account">
               <PropertyRef Name="id" />
@@ -119,8 +119,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_leader_account">
-          <End Role="account" Type="CustomSuzyModel.Store.account" Multiplicity="1" />
-          <End Role="subscriber" Type="CustomSuzyModel.Store.subscriber" Multiplicity="*" />
+          <End Role="account" Type="Хранилище CustomSuzyModel.account" Multiplicity="1" />
+          <End Role="subscriber" Type="Хранилище CustomSuzyModel.subscriber" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="account">
               <PropertyRef Name="id" />
@@ -136,29 +136,29 @@
     <edmx:ConceptualModels>
       <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CustomSuzyEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="account" EntityType="CustomSuzyModel.account" />
-          <EntitySet Name="avatar" EntityType="CustomSuzyModel.avatar" />
+          <EntitySet Name="accounts" EntityType="CustomSuzyModel.account" />
+          <EntitySet Name="avatars" EntityType="CustomSuzyModel.avatar" />
           <EntitySet Name="location_area" EntityType="CustomSuzyModel.location_area" />
-          <EntitySet Name="subscriber" EntityType="CustomSuzyModel.subscriber" />
+          <EntitySet Name="subscribers" EntityType="CustomSuzyModel.subscriber" />
           <AssociationSet Name="FC_account_avatar" Association="CustomSuzyModel.FC_account_avatar">
-            <End Role="avatar" EntitySet="avatar" />
-            <End Role="account" EntitySet="account" />
+            <End Role="avatar" EntitySet="avatars" />
+            <End Role="account" EntitySet="accounts" />
           </AssociationSet>
           <AssociationSet Name="FK_account_avatar" Association="CustomSuzyModel.FK_account_avatar">
-            <End Role="avatar" EntitySet="avatar" />
-            <End Role="account" EntitySet="account" />
+            <End Role="avatar" EntitySet="avatars" />
+            <End Role="account" EntitySet="accounts" />
           </AssociationSet>
           <AssociationSet Name="FK_account_subscriber" Association="CustomSuzyModel.FK_account_subscriber">
-            <End Role="account" EntitySet="account" />
-            <End Role="subscriber" EntitySet="subscriber" />
+            <End Role="account" EntitySet="accounts" />
+            <End Role="subscriber" EntitySet="subscribers" />
           </AssociationSet>
           <AssociationSet Name="FK_area_account" Association="CustomSuzyModel.FK_area_account">
-            <End Role="account" EntitySet="account" />
+            <End Role="account" EntitySet="accounts" />
             <End Role="location_area" EntitySet="location_area" />
           </AssociationSet>
           <AssociationSet Name="FK_leader_account" Association="CustomSuzyModel.FK_leader_account">
-            <End Role="account" EntitySet="account" />
-            <End Role="subscriber" EntitySet="subscriber" />
+            <End Role="account" EntitySet="accounts" />
+            <End Role="subscriber" EntitySet="subscribers" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="account">
@@ -174,9 +174,9 @@
           <Property Name="admin" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="avatar" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="account" ToRole="avatar" />
           <NavigationProperty Name="avatar1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="account" ToRole="avatar" />
-          <NavigationProperty Name="subscriber" Relationship="CustomSuzyModel.FK_account_subscriber" FromRole="account" ToRole="subscriber" />
+          <NavigationProperty Name="subscribers" Relationship="CustomSuzyModel.FK_account_subscriber" FromRole="account" ToRole="subscriber" />
           <NavigationProperty Name="location_area" Relationship="CustomSuzyModel.FK_area_account" FromRole="account" ToRole="location_area" />
-          <NavigationProperty Name="subscriber1" Relationship="CustomSuzyModel.FK_leader_account" FromRole="account" ToRole="subscriber" />
+          <NavigationProperty Name="subscribers1" Relationship="CustomSuzyModel.FK_leader_account" FromRole="account" ToRole="subscriber" />
         </EntityType>
         <EntityType Name="avatar">
           <Key>
@@ -184,8 +184,8 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="avatar_src" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="account" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="avatar" ToRole="account" />
-          <NavigationProperty Name="account1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="avatar" ToRole="account" />
+          <NavigationProperty Name="accounts" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="avatar" ToRole="account" />
+          <NavigationProperty Name="accounts1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="avatar" ToRole="account" />
         </EntityType>
         <EntityType Name="location_area">
           <Key>
@@ -275,8 +275,8 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CustomSuzyModelStoreContainer" CdmEntityContainer="CustomSuzyEntities">
-          <EntitySetMapping Name="account">
+        <EntityContainerMapping StorageEntityContainer="Хранилище CustomSuzyModelContainer" CdmEntityContainer="CustomSuzyEntities">
+          <EntitySetMapping Name="accounts">
             <EntityTypeMapping TypeName="CustomSuzyModel.account">
               <MappingFragment StoreEntitySet="account">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -289,7 +289,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="avatar">
+          <EntitySetMapping Name="avatars">
             <EntityTypeMapping TypeName="CustomSuzyModel.avatar">
               <MappingFragment StoreEntitySet="avatar">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -310,7 +310,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="subscriber">
+          <EntitySetMapping Name="subscribers">
             <EntityTypeMapping TypeName="CustomSuzyModel.subscriber">
               <MappingFragment StoreEntitySet="subscriber">
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -333,9 +333,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
