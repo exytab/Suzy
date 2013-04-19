@@ -74,6 +74,20 @@ namespace Suzy.BO
             return result;
         }
 
+        public static Account GetByName(string name)
+        {
+            Account result = null;
+            using (OurDB db = new OurDB())
+            {
+                var accounts = from account in db.Accounts
+                               where account.name == name
+                               select account;
+                if (accounts.Any())
+                    return new Account(accounts.First());
+            }
+            return result;
+        }
+
 
         public static Account Get(int id)
         {
@@ -89,5 +103,7 @@ namespace Suzy.BO
                 }
             return result;
         }
+
+        //TODO: Get: query
     }
 }

@@ -24,7 +24,6 @@ namespace Suzy.BO
         public int id { get; set; }
         public string name { get; set; }
         public string surname { get; set; }
-        public string login { get; set; }
         public string password { get; set; }
         public string email { get; set; }
         public int id_avatar { get; set; }
@@ -46,7 +45,6 @@ namespace Suzy.BO
                     return false;
                 else if (this.name == accountObj.name
                     &&   this.surname == accountObj.surname
-                    &&   this.login == accountObj.login
                     &&   this.password == accountObj.password
                     &&   this.email == accountObj.email
                     &&   this.id_avatar == accountObj.id_avatar

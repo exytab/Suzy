@@ -20,5 +20,10 @@ namespace Suzy.Web
             signForm.RenderControl(htmlWriter);
             return sb.ToString();
         }
+
+        public static void RedirectRoot(HttpResponse Response)
+        {
+            Response.Redirect("/");
+        }
     }
 }

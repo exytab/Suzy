@@ -90,6 +90,7 @@
     <Content Include="Profile.aspx" />
     <Content Include="SignForm.ascx" />
     <Content Include="Tabs.ascx" />
+    <Content Include="User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +145,13 @@
     </Compile>
     <Compile Include="Tabs.ascx.designer.cs">
       <DependentUpon>Tabs.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

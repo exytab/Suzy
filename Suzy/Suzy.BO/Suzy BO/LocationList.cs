@@ -46,5 +46,13 @@ namespace Suzy.BO
 
         }
 
+        public static List<LocationArea> GetByAccount(int accountId)
+        {
+            using (OurDB db = new OurDB())
+            {
+                return db.Location_areas.Where(area => area.id_account == accountId).ToList().Select(item => new LocationArea(item)).ToList();
+            }
+        }
+
     }
 }

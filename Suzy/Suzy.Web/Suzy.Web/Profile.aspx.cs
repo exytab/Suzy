@@ -12,7 +12,7 @@ namespace Suzy.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!SessionManager.IsAuthorization())
-                Response.Redirect("/");
+                Helper.RedirectRoot(Response);
         }
     }
 }
