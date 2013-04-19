@@ -40,7 +40,7 @@ ipch/
 *.aps
 *.ncb
 *.opensdf
-*.sdf
+#*.sdf #MS SQL Compact Database
 
 # Visual Studio profiler
 *.psess
