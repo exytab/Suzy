@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ajax\Common.asmx" />
+    <Content Include="App_Data\CustomSuzy.sdf" />
     <Content Include="css\img\glyphicons-halflings-white.png" />
     <Content Include="css\img\glyphicons-halflings.png" />
     <Content Include="css\metro-bootstrap.css" />

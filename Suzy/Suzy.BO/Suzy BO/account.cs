@@ -11,7 +11,7 @@ namespace Suzy.BO
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class account
     {
         public account()
@@ -20,15 +20,15 @@ namespace Suzy.BO
             this.location_area = new HashSet<location_area>();
             this.subscribers1 = new HashSet<subscriber>();
         }
-
+    
         public int id { get; set; }
         public string name { get; set; }
         public string password { get; set; }
         public string email { get; set; }
         public int id_avatar { get; set; }
-        public bool ban { get; set; }
-        public bool admin { get; set; }
-
+        public Nullable<bool> ban { get; set; }
+        public Nullable<bool> admin { get; set; }
+    
         public virtual avatar avatar { get; set; }
         public virtual avatar avatar1 { get; set; }
         public virtual ICollection<subscriber> subscribers { get; set; }
@@ -56,6 +56,5 @@ namespace Suzy.BO
             else
                 return false;
         }
-
     }
 }

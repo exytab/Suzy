@@ -22,8 +22,8 @@ namespace Suzy.BO
         public string password { get { return _account.password; } set { _account.password = value; } }
         public string email { get { return _account.email; } set { _account.email = value; } }
         public int id_avatar { get { return _account.id_avatar; } set { _account.id_avatar = value; } }
-        public bool ban { get { return _account.ban; } set { _account.ban = value; } }
-        public bool admin { get { return _account.admin; } set { _account.admin = value; } }
+        public bool? ban { get { return _account.ban; } set { _account.ban = value; } }
+        public bool? admin { get { return _account.admin; } set { _account.admin = value; } }
 
         /// <summary>
         /// Этот метод сохраняет наш Account в БД        

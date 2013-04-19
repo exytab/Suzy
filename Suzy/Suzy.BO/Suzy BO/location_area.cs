@@ -11,17 +11,17 @@ namespace Suzy.BO
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class location_area
     {
         public int id { get; set; }
         public string name { get; set; }
-        public float lattitude { get; set; }
-        public float longtitude { get; set; }
-        public float radius { get; set; }
+        public Nullable<float> lattitude { get; set; }
+        public Nullable<float> longtitude { get; set; }
+        public Nullable<float> radius { get; set; }
         public int id_account { get; set; }
-        public System.DateTime time_of_marking { get; set; }
-
+        public Nullable<System.DateTime> time_of_marking { get; set; }
+    
         public virtual account account { get; set; }
 
         public override bool Equals(object obj)
@@ -45,6 +45,5 @@ namespace Suzy.BO
             else
                 return false;
         }
-
     }
 }

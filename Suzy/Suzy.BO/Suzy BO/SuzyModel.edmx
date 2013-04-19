@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище CustomSuzyModel" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CustomSuzyModel" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="Хранилище CustomSuzyModelContainer">
           <EntitySet Name="account" EntityType="Хранилище CustomSuzyModel.account" store:Type="Tables" />
           <EntitySet Name="avatar" EntityType="Хранилище CustomSuzyModel.avatar" store:Type="Tables" />
@@ -36,31 +36,31 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="password" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="email" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
           <Property Name="id_avatar" Type="int" Nullable="false" />
-          <Property Name="ban" Type="bit" Nullable="false" />
-          <Property Name="admin" Type="bit" Nullable="false" />
+          <Property Name="ban" Type="bit" />
+          <Property Name="admin" Type="bit" />
         </EntityType>
         <EntityType Name="avatar">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="avatar_src" Type="nvarchar" Nullable="false" />
+          <Property Name="avatar_src" Type="nvarchar" />
         </EntityType>
         <EntityType Name="location_area">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="lattitude" Type="real" Nullable="false" />
-          <Property Name="longtitude" Type="real" Nullable="false" />
-          <Property Name="radius" Type="real" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="lattitude" Type="real" />
+          <Property Name="longtitude" Type="real" />
+          <Property Name="radius" Type="real" />
           <Property Name="id_account" Type="int" Nullable="false" />
-          <Property Name="time_of_marking" Type="datetime" Nullable="false" />
+          <Property Name="time_of_marking" Type="datetime" />
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="subscriber">
           <Key>
@@ -130,8 +130,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -166,12 +165,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="id_avatar" Type="Int32" Nullable="false" />
-          <Property Name="ban" Type="Boolean" Nullable="false" />
-          <Property Name="admin" Type="Boolean" Nullable="false" />
+          <Property Name="ban" Type="Boolean" />
+          <Property Name="admin" Type="Boolean" />
           <NavigationProperty Name="avatar" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="account" ToRole="avatar" />
           <NavigationProperty Name="avatar1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="account" ToRole="avatar" />
           <NavigationProperty Name="subscribers" Relationship="CustomSuzyModel.FK_account_subscriber" FromRole="account" ToRole="subscriber" />
@@ -183,7 +182,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="avatar_src" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="avatar_src" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="accounts" Relationship="CustomSuzyModel.FC_account_avatar" FromRole="avatar" ToRole="account" />
           <NavigationProperty Name="accounts1" Relationship="CustomSuzyModel.FK_account_avatar" FromRole="avatar" ToRole="account" />
         </EntityType>
@@ -192,12 +191,12 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="lattitude" Type="Single" Nullable="false" />
-          <Property Name="longtitude" Type="Single" Nullable="false" />
-          <Property Name="radius" Type="Single" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="lattitude" Type="Single" />
+          <Property Name="longtitude" Type="Single" />
+          <Property Name="radius" Type="Single" />
           <Property Name="id_account" Type="Int32" Nullable="false" />
-          <Property Name="time_of_marking" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="time_of_marking" Type="DateTime" Precision="3" />
           <NavigationProperty Name="account" Relationship="CustomSuzyModel.FK_area_account" FromRole="location_area" ToRole="account" />
         </EntityType>
         <EntityType Name="subscriber">
