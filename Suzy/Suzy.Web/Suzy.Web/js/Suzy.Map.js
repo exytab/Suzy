@@ -30,6 +30,7 @@
                         center: [myLatitude, myLongitude],
                         zoom: 16
                     });
+                    myMap.behaviors.enable('scrollZoom');
                     myMap.controls.add('mapTools');
                     myMap.controls.add('typeSelector');
                     myMap.controls.add('zoomControl');
@@ -64,10 +65,10 @@
                         for (var i = 0; i < points.length; i++) {
                             myGeoObjects[i] = new ymaps.GeoObject({
                                 geometry: { type: "Point", coordinates: [points[i].Latitude, points[i].Longitude] }
-                                //, properties: {
-                                //    clusterCaption: 'Геообъект №1',
-                                //    balloonContentBody: 'Содержимое балуна геообъекта №1.'
-                                //}
+                                , properties: {
+                                    clusterCaption: points[i].Title
+                                    //, balloonContentBody: 'Содержимое балуна геообъекта №1.'
+                                }
                             });
                         }
                         //myGeoObjects[0] = new ymaps.GeoObject({
@@ -86,7 +87,10 @@
                         //});
 
                         // создадим кластеризатор и запретим приближать карту при клике на кластеры
-                        clusterer = new ymaps.Clusterer({ clusterDisableClickZoom: true });
+                        clusterer = new ymaps.Clusterer({
+                            clusterDisableClickZoom: true,
+                            openBalloonOnClick: false
+                        });
                         clusterer.add(myGeoObjects);
                         
                         
@@ -95,26 +99,26 @@
 
                         // Поскольку по умолчанию объекты добавляются асинхронно,
                         // обработку данных можно делать только после события, сигнализирующего об
-                        // окончании добавления объектов на карту.
-                        clusterer.events.add('objectsaddtomap', function () {
+                        //// окончании добавления объектов на карту.
+                        //clusterer.events.add('objectsaddtomap', function () {
 
-                            // Получим данные о состоянии объекта внутри кластера.
-                            var geoObjectState = clusterer.getObjectState(myGeoObjects[1]);
-                            // Проверяем, находится ли объект находится в видимой области карты.
-                            if (geoObjectState.isShown) {
+                        //    // Получим данные о состоянии объекта внутри кластера.
+                        //    var geoObjectState = clusterer.getObjectState(myGeoObjects[1]);
+                        //    // Проверяем, находится ли объект находится в видимой области карты.
+                        //    if (geoObjectState.isShown) {
 
-                                // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
-                                if (geoObjectState.isClustered) {
-                                    geoObjectState.cluster.state.set('activeObject', myGeoObjects[1]);
-                                    geoObjectState.cluster.balloon.open();
+                        //        // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
+                        //        if (geoObjectState.isClustered) {
+                        //            geoObjectState.cluster.state.set('activeObject', myGeoObjects[1]);
+                        //            geoObjectState.cluster.balloon.open();
 
-                                } else {
-                                    // Если объект не попал в кластер, открываем его собственный балун.
-                                    myGeoObjects[1].balloon.open();
-                                }
-                            }
+                        //        } else {
+                        //            // Если объект не попал в кластер, открываем его собственный балун.
+                        //            myGeoObjects[1].balloon.open();
+                        //        }
+                        //    }
 
-                        });
+                        //});
 
                         myMap.geoObjects.add(clusterer);
 

@@ -57,6 +57,11 @@ namespace Suzy.Web
                 "~/Profile.aspx"
                 );
             routes.MapPageRoute(
+                "users",
+                "users",
+                "~/Users.aspx"
+            );
+            routes.MapPageRoute(
                 "user",
                 "user/{userLogin}",
                 "~/User.aspx"

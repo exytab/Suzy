@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using Suzy.BO;
 
 namespace Suzy.Web
 {
@@ -29,6 +30,14 @@ namespace Suzy.Web
         public static string PointToString(float? point)
         {
             return point.ToString().Replace(",", ".");
+        }
+
+        public static string UserURL(Account account)
+        {
+            if (string.IsNullOrEmpty(account.name))
+                return string.Format("/user/id/{0}", account.id);
+            else
+                return string.Format("/user/{0}", account.name);
         }
     }
 }

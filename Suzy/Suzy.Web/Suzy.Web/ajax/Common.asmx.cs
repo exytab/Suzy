@@ -38,9 +38,9 @@ namespace Suzy.Web.ajax
                 {
                     if(password == account.password)
                     {
-                        SessionManager.SetAccount(account);
+                            SessionManager.SetAccount(account);
 
-                        result = string.Format("replace:{0}", Helper.UserControlToString("SignForm.ascx"));
+                            result = string.Format("replace:{0}", Helper.UserControlToString("SignForm.ascx"));                      
                     }
                     else
                     {
@@ -83,6 +83,43 @@ namespace Suzy.Web.ajax
                     
                     LocationList.Add(la);
                 }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public string SaveProfile(int id, string name, string password, string password2)
+        {
+            string result = string.Empty;
+            try
+            {
+                if (SessionManager.IsAuthorization() && id == SessionManager.Get())
+                {
+                    if (password == password2)
+                    {    
+                        if(AccountList.Get().Where(item => item.name == name && item.id != id).Any())
+                        {
+                            result = "alert:Name - busy";
+                        }
+                        else
+                        {
+                            Account account = AccountList.Get(id);
+                            account.name = name;
+                            if (!string.IsNullOrEmpty(password))
+                                account.password = password;
+                            account.Save();
+                            //result = "reload:";
+                        }
+                    }
+                    else
+                        result = "alert:You entered different password";
+                }
+                else
+                    result = "alert:Invalid session";
             }
             catch (Exception ex)
             {
