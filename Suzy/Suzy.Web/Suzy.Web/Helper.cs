@@ -25,5 +25,10 @@ namespace Suzy.Web
         {
             Response.Redirect("/");
         }
+
+        public static string PointToString(float? point)
+        {
+            return point.ToString().Replace(",", ".");
+        }
     }
 }

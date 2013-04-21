@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 namespace Suzy.BO
 {
+    [Obsolete("Устарел", true)]
     class OurDB : DbContext
     {
         public DbSet<account> Accounts { get; set; }

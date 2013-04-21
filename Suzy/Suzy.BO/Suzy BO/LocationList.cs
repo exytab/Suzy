@@ -26,9 +26,9 @@ namespace Suzy.BO
             _location_area.radius = location_area.radius;
             _location_area.id = location_area.id;
             _location_area.time_of_marking = location_area.time_of_marking;
-            using (OurDB db = new OurDB())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                db.Location_areas.Add(_location_area);
+                db.location_area.Add(_location_area);
                 db.SaveChanges();
             }
 
@@ -39,18 +39,18 @@ namespace Suzy.BO
         /// <returns>Возвращаем контейнер Локаций с БД</returns>
         public static List<LocationArea> Get()
         {
-            using (OurDB db = new OurDB())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                return db.Location_areas.ToList().Select(item => new LocationArea(item)).ToList();
+                return db.location_area.ToList().Select(item => new LocationArea(item)).ToList();
             }
 
         }
 
         public static List<LocationArea> GetByAccount(int accountId)
         {
-            using (OurDB db = new OurDB())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                return db.Location_areas.Where(area => area.id_account == accountId).ToList().Select(item => new LocationArea(item)).ToList();
+                return db.location_area.Where(area => area.id_account == accountId).ToList().Select(item => new LocationArea(item)).ToList();
             }
         }
 

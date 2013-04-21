@@ -10,8 +10,8 @@ namespace Suzy.Web
 {
     public partial class User : System.Web.UI.Page
     {
-        Account account = null;
-        List<LocationArea> locationAreas = null; // http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/Clusterer.xml
+        public Account account = null;
+        public List<LocationArea> locationAreas = null; // http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/Clusterer.xml
 
         protected void Page_Load(object sender, EventArgs e)
         {

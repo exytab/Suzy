@@ -24,10 +24,10 @@ namespace Suzy.BO
             _account.id_avatar = account.id_avatar > 0  ? account.id_avatar : 1;
             _account.ban = account.ban;
             _account.admin = account.admin;
-            using (var Model = new CustomSuzyEntities())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                Model.accounts.Add(_account);
-                Model.SaveChanges();
+                db.accounts.Add(_account);
+                db.SaveChanges();
             }
             //using (OurDB db = new OurDB())
             //{
@@ -43,9 +43,9 @@ namespace Suzy.BO
         /// <returns>Возвращаем контейнер Аккаунтов с БД</returns>
         public static List<Account> Get()
         {
-            using (var Model = new CustomSuzyEntities())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                return Model.accounts.ToList().Select(item => new Account(item)).ToList();
+                return db.accounts.ToList().Select(item => new Account(item)).ToList();
             }
             //using (OurDB db = new OurDB())
             //{
@@ -66,9 +66,9 @@ namespace Suzy.BO
             //    if (accounts.Any())
             //        return new Account(accounts.First());
             //}
-            using (var Model = new CustomSuzyEntities())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                var accounts = from account in Model.accounts
+                var accounts = from account in db.accounts
                                where account.email == email && account.password == password
                                select account;
                 if (accounts.Any())
@@ -89,11 +89,11 @@ namespace Suzy.BO
             //    if (accounts.Any())
             //        return new Account(accounts.First());
             //}
-            using (var Model = new CustomSuzyEntities())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
                 //Model.Connection.Open();
 
-                var accounts = from account in Model.accounts
+                var accounts = from account in db.accounts
                                where account.email == email 
                                select account;
                 if (accounts.Any())
@@ -113,7 +113,7 @@ namespace Suzy.BO
             //    if (accounts.Any())
             //        return new Account(accounts.First());
             //}
-            using (var db = new CustomSuzyEntities())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
                 var accounts = from account in db.accounts
                                where account.name == name
@@ -129,7 +129,7 @@ namespace Suzy.BO
         {
             Account result = null;
             if(id > 0)
-                using (var db = new CustomSuzyEntities())
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
                 {
                     var accounts = from account in db.accounts
                                    where account.id == id

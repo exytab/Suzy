@@ -30,9 +30,9 @@ namespace Suzy.BO
         /// </summary>
         public void Save()
         {
-            using (OurDB db = new OurDB())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                var account = db.Accounts.Find(id);
+                var account = db.accounts.Find(id);
                 account.name = this.name;
                 account.password = this.password;
                 account.email = this.email;
@@ -41,7 +41,6 @@ namespace Suzy.BO
                 account.admin = this.admin;
                 db.SaveChanges();
             }
-
         }
 
         internal Account(account _Account)

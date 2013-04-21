@@ -27,9 +27,9 @@ namespace Suzy.BO
 
         public void Save()
         {
-            using (OurDB db = new OurDB())
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                var location_area = db.Location_areas.Find(id);
+                var location_area = db.location_area.Find(id);
                 location_area.id = this.id;
                 location_area.name = this.name;
                 location_area.lattitude = this.lattitude;

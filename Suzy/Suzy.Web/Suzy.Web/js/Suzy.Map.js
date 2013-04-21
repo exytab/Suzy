@@ -4,14 +4,18 @@
     var myMap;
     var myLatitude, myLongitude, myAccuracy;
     var myLocationPoint;
+    var $this;
+    var points = undefined;
 
     var methods = {
         init: function (options) {
+            if (options !== undefined && options.points !== undefined)
+                points = options.points;
+
             return this.each(function () {
-                var $this = $(this);
+                $this = $(this);
 
                 // Как только будет загружен API и готов DOM, выполняем инициализацию
-
                 ymaps.ready(init);
                 
                 function init() {
@@ -22,7 +26,7 @@
                     myAccuracy = 0;
                     
                     myLocationPoint = new ymaps.GeoObjectCollection();
-                    myMap = new ymaps.Map('big-map', {
+                    myMap = new ymaps.Map($this.attr("id"), {
                         center: [myLatitude, myLongitude],
                         zoom: 16
                     });
@@ -32,23 +36,89 @@
                     myMap.controls.add('trafficControl');
                     myMap.controls.add('miniMap');
 
-                    var myButton = new ymaps.control.Button({
-                        data: {
-                            content: 'Save position',
-                            title: 'Save position'
-                        }
-                    }, {
-                        selectOnClick: false
-                    }
-);
-                    myButton.events
-                        .add('click', function () {
-                            methods.send();
-                        });
-                    myMap.controls.add(myButton, { top: 5, left: 160 });
+//                    var myButton = new ymaps.control.Button({
+//                        data: {
+//                            content: 'Save position',
+//                            title: 'Save position'
+//                        }
+//                    }, {
+//                        selectOnClick: false
+//                    }
+//);
+//                    myButton.events
+//                        .add('click', function () {
+//                            methods.send();
+//                        });
+//                    myMap.controls.add(myButton, { top: 5, left: 160 });
 
                     SetPlacement(myMap, myLatitude, myLongitude, "Blue");
                     GetGeoLocation();
+                    
+                    if (points !== undefined) {
+                        //http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/Clusterer.xml
+
+                        // создание кластеризатора
+                        // создадим массив геообъектов
+                        myGeoObjects = [];
+                        
+                        for (var i = 0; i < points.length; i++) {
+                            myGeoObjects[i] = new ymaps.GeoObject({
+                                geometry: { type: "Point", coordinates: [points[i].Latitude, points[i].Longitude] }
+                                //, properties: {
+                                //    clusterCaption: 'Геообъект №1',
+                                //    balloonContentBody: 'Содержимое балуна геообъекта №1.'
+                                //}
+                            });
+                        }
+                        //myGeoObjects[0] = new ymaps.GeoObject({
+                        //    geometry: { type: "Point", coordinates: [56.034, 36.992] },
+                        //    properties: {
+                        //        clusterCaption: 'Геообъект №1',
+                        //        balloonContentBody: 'Содержимое балуна геообъекта №1.'
+                        //    }
+                        //});
+                        //myGeoObjects[1] = new ymaps.GeoObject({
+                        //    geometry: { type: "Point", coordinates: [56.021, 36.983] },
+                        //    properties: {
+                        //        clusterCaption: 'Геообъект №2',
+                        //        balloonContentBody: 'Содержимое балуна геообъекта №2.'
+                        //    }
+                        //});
+
+                        // создадим кластеризатор и запретим приближать карту при клике на кластеры
+                        clusterer = new ymaps.Clusterer({ clusterDisableClickZoom: true });
+                        clusterer.add(myGeoObjects);
+                        
+                        
+
+                        // Открытие балуна кластера с выбранным объектом.
+
+                        // Поскольку по умолчанию объекты добавляются асинхронно,
+                        // обработку данных можно делать только после события, сигнализирующего об
+                        // окончании добавления объектов на карту.
+                        clusterer.events.add('objectsaddtomap', function () {
+
+                            // Получим данные о состоянии объекта внутри кластера.
+                            var geoObjectState = clusterer.getObjectState(myGeoObjects[1]);
+                            // Проверяем, находится ли объект находится в видимой области карты.
+                            if (geoObjectState.isShown) {
+
+                                // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
+                                if (geoObjectState.isClustered) {
+                                    geoObjectState.cluster.state.set('activeObject', myGeoObjects[1]);
+                                    geoObjectState.cluster.balloon.open();
+
+                                } else {
+                                    // Если объект не попал в кластер, открываем его собственный балун.
+                                    myGeoObjects[1].balloon.open();
+                                }
+                            }
+
+                        });
+
+                        myMap.geoObjects.add(clusterer);
+
+                    }
                 }
                 function SetPlacement(myMap, Latitude, Longitude, Color) {
                     var presetStyle = "twirl#blueIcon";
