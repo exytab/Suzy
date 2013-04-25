@@ -35,5 +35,10 @@ namespace Suzy.Web
         {
             return System.Web.HttpContext.Current.Session["UserID"] != null;
         }
+
+        public static void Logout()
+        {
+            System.Web.HttpContext.Current.Session["UserID"] = null;
+        }
     }
 }

@@ -3,7 +3,7 @@
 <div class="container" style="height: 50px">
 	<div class="navbar" style="height: 25px">
 		<div class="container">
-			<ul class="nav">
+			<ul class="nav" style="width: 100%;">
 			    <li class="active">
 				    <a href="/">Home</a>
 			    </li>
@@ -16,6 +16,9 @@
 			    <li>
 			        <a href="/profile">Profile</a>
 			    </li>
+                <li style="float: right;">
+                     <a href="#" id="logout">Logout</a>
+                </li>
                 <% } %>
 <%--			    <li class="divider-vertical"></li>
 			    <li><a href="#">Link 2</a></li>

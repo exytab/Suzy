@@ -67,6 +67,21 @@ namespace Suzy.Web.ajax
         }
 
         [WebMethod(EnableSession = true)]
+        public string Logout()
+        {
+            string result = string.Empty;
+            try
+            {
+                SessionManager.Logout();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return result;
+        }
+
+        [WebMethod(EnableSession = true)]
         public string SavePosition(float latitude, float longitude, float radius)
         {
             string result = string.Empty;

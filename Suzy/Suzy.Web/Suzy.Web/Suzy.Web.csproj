@@ -170,6 +170,7 @@
   <ItemGroup>
     <Content Include="Base.Master" />
     <Content Include="js\Suzy.Profile.js" />
+    <Content Include="js\Suzy.Logout.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

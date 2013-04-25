@@ -18,10 +18,11 @@
                         dataType: "json",
                         success: function (data) {
                             if (data.d.indexOf(replaceText) == 0) {
-                                var $parent = $this.parent();
-                                $this.remove();
-                                //$parent.prepend(data.d.substring(replaceText.length));
-                                $parent.append(data.d.substring(replaceText.length));
+                                //var $parent = $this.parent();
+                                //$this.remove();
+                                ////$parent.prepend(data.d.substring(replaceText.length));
+                                //$parent.append(data.d.substring(replaceText.length));
+                                location.reload();
                             } else if (data.d.indexOf(alertText) == 0) {
                                 alert(data.d.substring(alertText.length));
                             } else {

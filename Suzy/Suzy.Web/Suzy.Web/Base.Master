@@ -71,14 +71,15 @@
  
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=en-US" type="text/javascript"></script>
     
-    <script type="text/javascript" src="/js/Suzy.Login.js?v=5" ></script>
+    <script type="text/javascript" src="/js/Suzy.Login.js?v=6" ></script>
+    <script type="text/javascript" src="/js/Suzy.Logout.js?v=1" ></script>
     <script type="text/javascript" src="/js/Suzy.Map.js?v=8" ></script>
     <script type="text/javascript" src="/js/Suzy.Profile.js?v=1" ></script>
     
     <script type="text/javascript">
         $(document).ready(function() {
             $(".login-form").suzyLogin();
-
+            $("#logout").suzyLogout();
         });
     </script>
     <asp:ContentPlaceHolder ID="JsContent" runat="server" />
