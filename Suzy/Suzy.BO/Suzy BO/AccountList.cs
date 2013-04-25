@@ -26,8 +26,21 @@ namespace Suzy.BO
             _account.admin = account.admin;
             using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
-                db.accounts.Add(_account);
-                db.SaveChanges();
+                var aEmail = from a in db.accounts
+                             where a.email == account.email
+                             select a;
+                var aName = from a in db.accounts
+                            where a.email == account.name
+                            select a;
+                if ((!string.IsNullOrEmpty(account.email) && aEmail.Any()) ||
+                    (!string.IsNullOrEmpty(account.name) && aName.Any()))
+                {
+                }
+                else
+                {
+                    db.accounts.Add(_account);
+                    db.SaveChanges();
+                }
             }
             //using (OurDB db = new OurDB())
             //{

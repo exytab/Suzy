@@ -32,14 +32,27 @@ namespace Suzy.BO
         {
             using (CustomSuzyEntities db = new CustomSuzyEntities())
             {
+                //Проверяю нет ли такого имени или емейла
                 var account = db.accounts.Find(id);
-                account.name = this.name;
-                account.password = this.password;
-                account.email = this.email;
-                account.id_avatar = this.id_avatar;
-                account.ban = this.ban;
-                account.admin = this.admin;
-                db.SaveChanges();
+                var aEmail = from a in db.accounts
+                               where a.email == this.email && a.id != this.id
+                               select a;
+                var aName = from a in db.accounts
+                            where a.name == name && a.id != this.id
+                             select a;
+                if ((!string.IsNullOrEmpty(this.email) && aEmail.Any()) || (!string.IsNullOrEmpty(this.name) && aName.Any()))
+                {
+                }
+                else
+                {
+                    account.name = this.name;
+                    account.password = this.password;
+                    account.email = this.email;
+                    account.id_avatar = this.id_avatar;
+                    account.ban = this.ban;
+                    account.admin = this.admin;
+                    db.SaveChanges();
+                }
             }
         }
 
