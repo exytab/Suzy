@@ -142,5 +142,12 @@ namespace Suzy.Web.ajax
             }
             return result;
         }
+
+        [WebMethod(EnableSession = true)]
+        public string UpdateAvatars(string Content)
+        {
+            //http://www.codeproject.com/Questions/416748/How-to-Call-WebMethod-of-Csharp-from-JQuery
+            return string.Empty;
+        }
     }
 }

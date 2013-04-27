@@ -140,7 +140,6 @@ namespace Suzy.BO
 
         public static Account Get(int id)
         {
-            Account result = null;
             if(id > 0)
                 using (CustomSuzyEntities db = new CustomSuzyEntities())
                 {
@@ -150,9 +149,43 @@ namespace Suzy.BO
                     if (accounts.Any())
                         return new Account(accounts.First());
                 }
-            return result;
+            return null;
         }
 
         //TODO: Get: query
+
+        public static List<Account> GetFollowing(int accountId)
+        {
+            if (accountId > 0)
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
+                {
+                    return (from account in db.accounts
+                            where
+                                (
+                                    from fId in db.subscribers
+                                    where fId.id_subscriber == accountId
+                                    select fId.id
+                                ).Contains(account.id)
+                            select new Account(account)).ToList();
+                }
+            return null;
+        }
+
+        public static List<Account> GetFollowers(int accountId)
+        {
+            if (accountId > 0)
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
+                {
+                    return (from account in db.accounts
+                            where
+                                (
+                                    from fId in db.subscribers
+                                    where fId.id_leader == accountId
+                                    select fId.id
+                                ).Contains(account.id)
+                            select new Account(account)).ToList();
+                }
+            return null;
+        }
     }
 }

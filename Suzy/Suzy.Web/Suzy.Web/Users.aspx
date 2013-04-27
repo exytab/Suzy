@@ -8,6 +8,8 @@
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +18,8 @@
             <td><a href="<%= Suzy.Web.Helper.UserURL(account) %>"><%= account.id %></a></td>
             <td><a href="<%= Suzy.Web.Helper.UserURL(account) %>"><%= account.name ?? string.Empty %></a></td>
             <td><a href="<%= Suzy.Web.Helper.UserURL(account) %>"><%= account.email %></a></td>
+            <td></td>
+            <td></td>
           </tr>
           <% } %>
         </tbody>

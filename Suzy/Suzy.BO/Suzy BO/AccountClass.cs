@@ -87,6 +87,22 @@ namespace Suzy.BO
                 return false;
         }
 
+        /// <summary>
+        /// Get Following Accounts List
+        /// </summary>
+        public List<Account> GetFollowing()
+        {
+            return AccountList.GetFollowing(this.id);
+        }
+
+        /// <summary>
+        /// Get Followers Accounts List
+        /// </summary>
+        public List<Account> GetFollowers()
+        {
+            return AccountList.GetFollowers(this.id);
+        }
+
 
     }
 }
