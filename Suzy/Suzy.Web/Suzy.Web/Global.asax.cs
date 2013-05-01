@@ -15,6 +15,7 @@ namespace Suzy.Web
         protected void Application_Start(object sender, EventArgs e)
         {
             AppDomain.CurrentDomain.SetData("SQLServerCompactEditionUnderWebHosting", true);
+            Suzy.Logger.Logg.er.Start(string.Format("{0}/log", Helper.AppPath()));
             Suzy.BO.Helper.Init();
             RegisterRoutes(RouteTable.Routes);
         }
@@ -46,7 +47,7 @@ namespace Suzy.Web
 
         protected void Application_End(object sender, EventArgs e)
         {
-
+            Logger.Logg.er.End();
         }
 
         void RegisterRoutes(RouteCollection routes)

@@ -183,6 +183,7 @@
     <Content Include="Base.Master" />
     <Content Include="js\Suzy.Profile.js" />
     <Content Include="js\Suzy.Logout.js" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,6 +195,10 @@
     <ProjectReference Include="..\..\Suzy.BO\Suzy BO\Suzy.BO.csproj">
       <Project>{92295f81-bcf5-4c4a-a384-03ebfdfdebf8}</Project>
       <Name>Suzy.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Suzy.Logger\Suzy.Logger.csproj">
+      <Project>{8bfb1ec6-cb10-4d2a-ac33-63fa5c927f89}</Project>
+      <Name>Suzy.Logger</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

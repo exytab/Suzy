@@ -7,6 +7,7 @@ using System.Web.UI;
 using Suzy.BO;
 using System.Text;
 using System.IO;
+using Suzy.Logger;
 
 namespace Suzy.Web.ajax
 {
@@ -61,7 +62,7 @@ namespace Suzy.Web.ajax
             }
             catch(Exception ex)
             {
-                
+                Logg.er.Log(ex);
             }
             return result;
         }
@@ -76,7 +77,7 @@ namespace Suzy.Web.ajax
             }
             catch (Exception ex)
             {
-
+                Logg.er.Log(ex);
             }
             return result;
         }
@@ -101,7 +102,7 @@ namespace Suzy.Web.ajax
             }
             catch (Exception ex)
             {
-
+                Logg.er.Log(ex);
             }
             return result;
         }
@@ -138,16 +139,10 @@ namespace Suzy.Web.ajax
             }
             catch (Exception ex)
             {
-
+                Logg.er.Log(ex);
             }
             return result;
         }
 
-        [WebMethod(EnableSession = true)]
-        public string UpdateAvatars(string Content)
-        {
-            //http://www.codeproject.com/Questions/416748/How-to-Call-WebMethod-of-Csharp-from-JQuery
-            return string.Empty;
-        }
     }
 }

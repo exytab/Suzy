@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suzy.Web", "Suzy.Web\Suzy.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suzy.BO", "..\Suzy.BO\Suzy BO\Suzy.BO.csproj", "{92295F81-BCF5-4C4A-A384-03EBFDFDEBF8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suzy.Logger", "..\Suzy.Logger\Suzy.Logger.csproj", "{8BFB1EC6-CB10-4D2A-AC33-63FA5C927F89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{92295F81-BCF5-4C4A-A384-03EBFDFDEBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92295F81-BCF5-4C4A-A384-03EBFDFDEBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92295F81-BCF5-4C4A-A384-03EBFDFDEBF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFB1EC6-CB10-4D2A-AC33-63FA5C927F89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFB1EC6-CB10-4D2A-AC33-63FA5C927F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFB1EC6-CB10-4D2A-AC33-63FA5C927F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFB1EC6-CB10-4D2A-AC33-63FA5C927F89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

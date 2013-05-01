@@ -17,7 +17,7 @@ namespace Suzy.Web
             StringWriter stWriter = new StringWriter(sb);
             HtmlTextWriter htmlWriter = new HtmlTextWriter(stWriter);
             Page page = new Page();
-            SignForm signForm = (SignForm)page.LoadControl(controlPath);
+            SignForm signForm = (SignForm) page.LoadControl(controlPath);
             signForm.RenderControl(htmlWriter);
             return sb.ToString();
         }
@@ -58,13 +58,18 @@ namespace Suzy.Web
 
         public static void SaveFile(HttpPostedFile File, String FileName)
         {
-            string Path = string.Format("{0}/avatars/{1}", HttpRuntime.AppDomainAppPath, FileName);
+            string Path = string.Format("{0}/avatars/{1}", AppPath(), FileName);
             File.SaveAs(Path);
         }
 
+        public static string AppPath()
+        {
+            return HttpRuntime.AppDomainAppPath;
+        }   
+
         public static string AvatarPath(string AvatarFile)
         {
-            return string.Format("{0}/avatars/{1}", HttpRuntime.AppDomainAppPath, AvatarFile);
+            return string.Format("{0}/avatars/{1}", AppPath(), AvatarFile);
         }
 
         public static string AvatarWebPath(string AvatarFile)
