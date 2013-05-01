@@ -133,11 +133,19 @@
                             iconContent: "I"
                         },
                         {
-                            preset: presetStyle
+                            preset: presetStyle,
+                            draggable: true
                         }
                     );
 
                     placemark.events.add('click', function () { methods.send(); });
+
+                    placemark.events.add('dragend', function () {
+                        var coor = placemark.geometry.getCoordinates();
+                        myLatitude = coor[0];
+                        myLongitude = coor[1];
+                        myAccuracy = 1;
+                    });
 
                     myLocationPoint.add(placemark);
                     
