@@ -1,6 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Footer.ascx.cs" Inherits="Suzy.Web.Footer" %>
 <!--FOOTER-->
-<div class="container navbar-fixed-bottom" style="width:100%;">
+<%--<div class="container navbar-fixed-bottom" style="width:100%;">--%>
+<div class="container" style="width:100%;">
 	<div class="well" style="padding: 8px 0; margin-bottom: 0px;">
 		<div class="container" style="text-align: right;">
             Designed by <a href="http://talkslab.github.io/metro-bootstrap/index.html">metro</a> and <a href="http://twitter.github.io/bootstrap/">Bootstrap</a>

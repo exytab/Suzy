@@ -31,9 +31,28 @@
                     <div class="control-group">
                         <label class="control-label" for="password2Input">Repeat password</label>
                         <div class="controls">
-                            <input class="input-xlarge" id="password2Input" type="password" value="">
+                            <input class="input-xlarge" id="password2Input" type="password" value="" />
                         </div>
                     </div> 
+                    <div class="control-group">
+                        <label class="control-label" for="avatar2Input">Avatar</label>
+                        <div class="controls">
+                            <div class="avatarPhotoSmall">
+                                <% if(SessionManager.GetAccount().CheckAvatar())
+                                   {
+                                       %><img src="<%= Suzy.Web.Helper.AvatarWebPath(SessionManager.GetAccount().GetAvatar())  %>"/>
+                                <%
+                                   }
+                                     %>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="control-group">
+                        <form id="fileupload" action="/AvatarUpload.aspx" method="post" enctype="multipart/form-data">
+                            <input type="file" name="files" />
+                            <input type="submit" value="Add avatar"/>
+                        </form>
+                    </div>                    
                     <div class="control-group">
                         <button type="submit" class="btn btn-primary" id="saveProfile">Save changes</button>
                     </div> 

@@ -15,6 +15,9 @@
         <meta name="author" content="" />
         <!-- Le styles -->
         <link rel="stylesheet" type="text/css" href="/css/metro-bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="/css/base.css" />
+
+        
 <%--        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css" />--%>
 
@@ -68,7 +71,7 @@
     <script type="text/javascript" src="/js/jquery.validate.js"></script>
     <script type="text/javascript" src="/js/jquery.validate.unobtrusive.js"></script>
     <script type="text/javascript" src="/js/jquery.unobtrusive-ajax.js"></script>
- 
+<%--  <script type="text/javascript" src="/js/bootstrap.file-input.js"></script>--%>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=en-US" type="text/javascript"></script>
     
     <script type="text/javascript" src="/js/Suzy.Login.js?v=6" ></script>

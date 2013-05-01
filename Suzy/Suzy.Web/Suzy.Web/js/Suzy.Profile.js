@@ -6,7 +6,7 @@
         init: function(options) {
             return this.each(function() {
                 var $this = $(this);
-                $this.find("#saveProfile").click(function() {
+                $this.find("#saveProfile").click(function () {
                     $.ajax({
                         type: "POST",
                         url: "/ajax/Common.asmx/SaveProfile",
@@ -22,7 +22,27 @@
 
                         }
                     });
-                    return false; 
+                    return false;
+                });
+
+                $this.find("#SaveAvatar").click(function () {
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "/ajax/Common.asmx/UpdateAvatars",
+                        data: $this.find("#avatarNewFile")[0].files["0"],
+                        contentType: "image/jpeg; charset=utf-8",
+                        success: function (data) {
+                            if (data.d.indexOf(alertText) == 0) {
+                                alert(data.d.substring(alertText.length));
+                            } else {
+                                console.log(data.d);
+                            }
+
+                        }
+                    });
+                    return false;
+                    
                 });
             });
         }

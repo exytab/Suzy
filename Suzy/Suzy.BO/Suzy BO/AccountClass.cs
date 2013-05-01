@@ -21,7 +21,7 @@ namespace Suzy.BO
         public string name { get { return _account.name; } set { _account.name = value; } }
         public string password { get { return _account.password; } set { _account.password = value; } }
         public string email { get { return _account.email; } set { _account.email = value; } }
-        public int id_avatar { get { return _account.id_avatar; } set { _account.id_avatar = value; } }
+        internal int id_avatar { get { return _account.id_avatar; } set { _account.id_avatar = value; } }
         public bool? ban { get { return _account.ban; } set { _account.ban = value; } }
         public bool? admin { get { return _account.admin; } set { _account.admin = value; } }
 
@@ -103,6 +103,49 @@ namespace Suzy.BO
             return AccountList.GetFollowers(this.id);
         }
 
+        /// <summary>
+        /// Save Avatar (only File name)
+        /// </summary>
+        public void SaveAvatar(String Path)
+        {
+            avatar avatar = new avatar();
+            avatar.avatar_src = Path;
+
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
+            {
+                db.avatars.Add(avatar);
+                db.SaveChanges();
+            }
+
+            this.id_avatar = avatar.id;
+            Save();
+        }
+
+        public string GetAvatar()
+        {
+            if (this.id_avatar > 1)
+            {
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
+                {
+                    var avatars = from avatar in db.avatars
+                                   where avatar.id == this.id_avatar
+                                   select avatar;
+                    if (avatars.Any())
+                        return avatars.First().avatar_src;
+                    else
+                        return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public bool CheckAvatar()
+        {
+            return this.id_avatar > 1;
+        }
 
     }
 }

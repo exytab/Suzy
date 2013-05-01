@@ -63,6 +63,8 @@
   <ItemGroup>
     <Content Include="ajax\Common.asmx" />
     <Content Include="App_Data\CustomSuzy.sdf" />
+    <Content Include="AvatarUpload.aspx" />
+    <Content Include="css\base.css" />
     <Content Include="css\img\glyphicons-halflings-white.png" />
     <Content Include="css\img\glyphicons-halflings.png" />
     <Content Include="css\metro-bootstrap.css" />
@@ -84,8 +86,11 @@
     <Content Include="js\bootstrap-tooltip.js" />
     <Content Include="js\bootstrap-transition.js" />
     <Content Include="js\bootstrap-typeahead.js" />
+    <Content Include="js\bootstrap.file-input.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery-1.8.0.js" />
+    <Content Include="js\jquery.fileupload.js" />
+    <Content Include="js\jquery.iframe-transport.js" />
     <Content Include="js\jquery.unobtrusive-ajax.js" />
     <Content Include="js\jquery.validate.js" />
     <Content Include="js\jquery.validate.unobtrusive.js" />
@@ -103,6 +108,13 @@
     <Compile Include="ajax\Common.asmx.cs">
       <DependentUpon>Common.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AvatarUpload.aspx.cs">
+      <DependentUpon>AvatarUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AvatarUpload.aspx.designer.cs">
+      <DependentUpon>AvatarUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Base.Master.cs">
       <DependentUpon>Base.Master</DependentUpon>
@@ -184,7 +196,9 @@
       <Name>Suzy.BO</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="avatars\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

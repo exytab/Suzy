@@ -22,9 +22,19 @@ namespace Suzy.Web
             return sb.ToString();
         }
 
-        public static void RedirectRoot(HttpResponse Response)
+        public static void RedirectRoot(HttpResponse response)
         {
-            Response.Redirect("/");
+            Redirect(response, "/");
+        }
+
+        public static void RedirectProfile(HttpResponse response)
+        {
+            Redirect(response, "/profile");
+        }
+
+        public static void Redirect(HttpResponse response, String page)
+        {
+            response.Redirect(page);
         }
 
         public static string PointToString(float? point)
@@ -38,6 +48,28 @@ namespace Suzy.Web
                 return string.Format("/user/id/{0}", account.id);
             else
                 return string.Format("/user/{0}", account.name);
+        }
+
+        public static bool CheckAvatar(string AvatarFile)
+        {
+            string Path = AvatarPath(AvatarFile);
+            return !System.IO.File.Exists(Path);
+        }
+
+        public static void SaveFile(HttpPostedFile File, String FileName)
+        {
+            string Path = string.Format("{0}/avatars/{1}", HttpRuntime.AppDomainAppPath, FileName);
+            File.SaveAs(Path);
+        }
+
+        public static string AvatarPath(string AvatarFile)
+        {
+            return string.Format("{0}/avatars/{1}", HttpRuntime.AppDomainAppPath, AvatarFile);
+        }
+
+        public static string AvatarWebPath(string AvatarFile)
+        {
+            return string.Format("/avatars/{0}", AvatarFile);
         }
     }
 }
