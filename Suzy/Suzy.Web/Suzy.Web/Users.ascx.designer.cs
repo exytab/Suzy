@@ -10,15 +10,6 @@
 namespace Suzy.Web {
     
     
-    public partial class Users {
-        
-        /// <summary>
-        /// Users1 элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::Suzy.Web.Users1 Users1;
+    public partial class Users1 {
     }
 }

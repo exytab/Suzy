@@ -8,11 +8,14 @@ using Suzy.BO;
 
 namespace Suzy.Web
 {
-    public partial class Users : System.Web.UI.Page
+    public partial class Followers : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Users1.Accounts = AccountList.Get();
+            if (!SessionManager.IsAuthorization())
+                Helper.RedirectRoot(Response);
+            else
+                Users.Accounts = AccountList.GetFollowers((int)SessionManager.Get());
         }
     }
 }

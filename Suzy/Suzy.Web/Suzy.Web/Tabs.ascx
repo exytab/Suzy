@@ -16,6 +16,12 @@
 			    <li>
 			        <a href="/profile">Profile</a>
 			    </li>
+                <li>
+			        <a href="/followings">Followings</a>
+			    </li>
+                <li>
+			        <a href="/followers">Followers</a>
+			    </li>
                 <li style="float: right;">
                      <a href="#" id="logout">Logout</a>
                 </li>

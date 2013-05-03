@@ -50,7 +50,7 @@
    
     <uc1:Tabs runat="server" id="Tabs" />
     <asp:ContentPlaceHolder ID="PageContent" runat="server" />
-    <uc1:Footer runat="server" id="Footer" />
+    <uc1:Footer runat="server" id="Footer"/>
 
     <!-- Le javascript ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -78,11 +78,13 @@
     <script type="text/javascript" src="/js/Suzy.Logout.js?v=1" ></script>
     <script type="text/javascript" src="/js/Suzy.Map.js?v=8" ></script>
     <script type="text/javascript" src="/js/Suzy.Profile.js?v=1" ></script>
+    <script type="text/javascript" src="/js/Suzy.UserList.js?v=1" ></script>
     
     <script type="text/javascript">
         $(document).ready(function() {
             $(".login-form").suzyLogin();
             $("#logout").suzyLogout();
+            $(".userList").userList();
         });
     </script>
     <asp:ContentPlaceHolder ID="JsContent" runat="server" />

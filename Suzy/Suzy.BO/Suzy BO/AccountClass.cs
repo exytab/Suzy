@@ -147,5 +147,72 @@ namespace Suzy.BO
             return this.id_avatar > 1;
         }
 
+        public bool IsFollower(int accountId)
+        {
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
+            {
+                var subs = from sub in db.subscribers
+                              where sub.id_leader == this.id &&
+                              sub.id_subscriber == accountId
+                              select sub;
+                return subs.Any();
+            }
+        }
+
+        public bool IsFollowing(int accountId)
+        {
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
+            {
+                var subs = from sub in db.subscribers
+                           where sub.id_leader == accountId &&
+                           sub.id_subscriber == this.id
+                           select sub;
+                return subs.Any();
+            }
+        }
+
+        public void Following(int accountId)
+        {
+            if (this.id > 0 && this.id != accountId)
+            {
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
+                {
+                    var subs = from sub in db.subscribers
+                               where sub.id_leader == accountId &&
+                                     sub.id_subscriber == this.id
+                               select sub;
+                    if (!subs.Any())
+                    {
+                        db.subscribers.Add(new subscriber()
+                                               {
+                                                   id_leader = accountId,
+                                                   id_subscriber = this.id
+                                               });
+
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        public void UnFollowing(int accountId)
+        {
+            if (this.id > 0 && this.id != accountId)
+            {
+                using (CustomSuzyEntities db = new CustomSuzyEntities())
+                {
+                    var subs = from sub in db.subscribers
+                               where sub.id_leader == accountId &&
+                                     sub.id_subscriber == this.id
+                               select sub;
+                    if (subs.Any())
+                    {
+                        db.subscribers.Remove(subs.First());
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
     }
 }

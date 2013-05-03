@@ -144,5 +144,43 @@ namespace Suzy.Web.ajax
             return result;
         }
 
+        [WebMethod(EnableSession = true)]
+        public string Following(int id)
+        {
+            string result = string.Empty;
+            try
+            {
+                if (SessionManager.IsAuthorization())
+                {
+                    SessionManager.GetAccount().Following(id);
+                    result = "true";
+                }
+            }
+            catch (Exception ex)
+            {
+                Logg.er.Log(ex);
+            }
+            return result;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public string UnFollowing(int id)
+        {
+            string result = string.Empty;
+            try
+            {
+                if (SessionManager.IsAuthorization())
+                {
+                    SessionManager.GetAccount().UnFollowing(id);
+                    result = "true";
+                }
+            }
+            catch (Exception ex)
+            {
+                Logg.er.Log(ex);
+            }
+            return result;
+        }
+
     }
 }

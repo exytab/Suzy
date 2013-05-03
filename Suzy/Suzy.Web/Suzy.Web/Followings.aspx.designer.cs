@@ -10,15 +10,15 @@
 namespace Suzy.Web {
     
     
-    public partial class Users {
+    public partial class Followings {
         
         /// <summary>
-        /// Users1 элемент управления.
+        /// Users элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::Suzy.Web.Users1 Users1;
+        protected global::Suzy.Web.Users1 Users;
     }
 }

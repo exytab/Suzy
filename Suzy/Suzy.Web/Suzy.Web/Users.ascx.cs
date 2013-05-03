@@ -8,11 +8,13 @@ using Suzy.BO;
 
 namespace Suzy.Web
 {
-    public partial class Users : System.Web.UI.Page
+    public partial class Users1 : System.Web.UI.UserControl
     {
+        public List<Account> Accounts = null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Users1.Accounts = AccountList.Get();
+
         }
     }
 }

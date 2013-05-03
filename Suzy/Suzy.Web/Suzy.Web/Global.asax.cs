@@ -63,6 +63,16 @@ namespace Suzy.Web
                 "~/Users.aspx"
             );
             routes.MapPageRoute(
+                "followings",
+                "followings",
+                "~/Followings.aspx"
+            );
+            routes.MapPageRoute(
+                "followers",
+                "followers",
+                "~/Followers.aspx"
+            );
+            routes.MapPageRoute(
                 "user",
                 "user/{userLogin}",
                 "~/User.aspx"

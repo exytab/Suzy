@@ -159,14 +159,13 @@ namespace Suzy.BO
             if (accountId > 0)
                 using (CustomSuzyEntities db = new CustomSuzyEntities())
                 {
-                    return (from account in db.accounts
-                            where
-                                (
-                                    from fId in db.subscribers
-                                    where fId.id_subscriber == accountId
-                                    select fId.id
-                                ).Contains(account.id)
-                            select new Account(account)).ToList();
+                   int[] ids = (
+                                        from fId in db.subscribers
+                                        where fId.id_subscriber == accountId
+                                        select fId.id_leader
+                                    ).ToArray();
+
+                   return (db.accounts.Where(i => ids.Contains(i.id)).ToList().Select(item => new Account(item)).ToList());
                 }
             return null;
         }
@@ -176,14 +175,13 @@ namespace Suzy.BO
             if (accountId > 0)
                 using (CustomSuzyEntities db = new CustomSuzyEntities())
                 {
-                    return (from account in db.accounts
-                            where
-                                (
-                                    from fId in db.subscribers
-                                    where fId.id_leader == accountId
-                                    select fId.id
-                                ).Contains(account.id)
-                            select new Account(account)).ToList();
+                    List<int> ids = (
+                                        from fId in db.subscribers
+                                        where fId.id_leader == accountId
+                                        select fId.id_subscriber
+                                    ).ToList();
+
+                    return (db.accounts.Where(i => ids.Contains(i.id)).ToList().Select(item => new Account(item)).ToList());
                 }
             return null;
         }
