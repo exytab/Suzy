@@ -214,5 +214,21 @@ namespace Suzy.BO
             }
         }
 
+        public LocationArea LastPoint()
+        {
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
+            {
+                List<location_area> areas = db.location_area.Where(area => area.id_account == this.id).ToList();
+                if(areas.Any())
+                {
+                    return new LocationArea(areas.OrderByDescending(item => item.id).First());
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
     }
 }

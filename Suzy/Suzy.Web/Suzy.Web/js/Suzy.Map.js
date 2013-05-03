@@ -6,184 +6,214 @@
     var myLocationPoint;
     var $this;
     var points = undefined;
+    var users = undefined;
 
     var methods = {
         init: function (options) {
-            if (options !== undefined && options.points !== undefined)
-                points = options.points;
+            if (options !== undefined) {
+                {
+                    if (options.points !== undefined)
+                        points = options.points;
 
-            return this.each(function () {
-                $this = $(this);
+                    if (options.users !== undefined)
+                        users = options.users;
+                }
 
-                // Как только будет загружен API и готов DOM, выполняем инициализацию
-                ymaps.ready(init);
-                
-                function init() {
-                    // Создание экземпляра карты и его привязка к контейнеру с
-                    // заданным id ("map")
-                    myLatitude = ymaps.geolocation.latitude;
-                    myLongitude = ymaps.geolocation.longitude;
-                    myAccuracy = 0;
-                    
-                    myLocationPoint = new ymaps.GeoObjectCollection();
-                    myMap = new ymaps.Map($this.attr("id"), {
-                        center: [myLatitude, myLongitude],
-                        zoom: 16
-                    });
-                    myMap.behaviors.enable('scrollZoom');
-                    myMap.controls.add('mapTools');
-                    myMap.controls.add('typeSelector');
-                    myMap.controls.add('zoomControl');
-                    myMap.controls.add('trafficControl');
-                    myMap.controls.add('miniMap');
+                return this.each(function() {
+                    $this = $(this);
 
-//                    var myButton = new ymaps.control.Button({
-//                        data: {
-//                            content: 'Save position',
-//                            title: 'Save position'
-//                        }
-//                    }, {
-//                        selectOnClick: false
-//                    }
-//);
-//                    myButton.events
-//                        .add('click', function () {
-//                            methods.send();
-//                        });
-//                    myMap.controls.add(myButton, { top: 5, left: 160 });
+                    // Как только будет загружен API и готов DOM, выполняем инициализацию
+                    ymaps.ready(init);
 
-                    SetPlacement(myMap, myLatitude, myLongitude, "Blue");
-                    GetGeoLocation();
-                    
-                    if (points !== undefined) {
-                        //http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/Clusterer.xml
+                    function init() {
+                        // Создание экземпляра карты и его привязка к контейнеру с
+                        // заданным id ("map")
+                        myLatitude = ymaps.geolocation.latitude;
+                        myLongitude = ymaps.geolocation.longitude;
+                        myAccuracy = 0;
 
-                        // создание кластеризатора
-                        // создадим массив геообъектов
-                        myGeoObjects = [];
-                        
-                        for (var i = 0; i < points.length; i++) {
-                            myGeoObjects[i] = new ymaps.GeoObject({
-                                geometry: { type: "Point", coordinates: [points[i].Latitude, points[i].Longitude] }
-                                , properties: {
-                                    clusterCaption: points[i].Title
-                                    //, balloonContentBody: 'Содержимое балуна геообъекта №1.'
-                                }
-                            });
-                        }
-                        //myGeoObjects[0] = new ymaps.GeoObject({
-                        //    geometry: { type: "Point", coordinates: [56.034, 36.992] },
-                        //    properties: {
-                        //        clusterCaption: 'Геообъект №1',
-                        //        balloonContentBody: 'Содержимое балуна геообъекта №1.'
-                        //    }
-                        //});
-                        //myGeoObjects[1] = new ymaps.GeoObject({
-                        //    geometry: { type: "Point", coordinates: [56.021, 36.983] },
-                        //    properties: {
-                        //        clusterCaption: 'Геообъект №2',
-                        //        balloonContentBody: 'Содержимое балуна геообъекта №2.'
-                        //    }
-                        //});
-
-                        // создадим кластеризатор и запретим приближать карту при клике на кластеры
-                        clusterer = new ymaps.Clusterer({
-                            clusterDisableClickZoom: true,
-                            openBalloonOnClick: false
+                        myLocationPoint = new ymaps.GeoObjectCollection();
+                        myMap = new ymaps.Map($this.attr("id"), {
+                            center: [myLatitude, myLongitude],
+                            zoom: 16
                         });
-                        clusterer.add(myGeoObjects);
-                        
-                        
+                        myMap.behaviors.enable('scrollZoom');
+                        myMap.controls.add('mapTools');
+                        myMap.controls.add('typeSelector');
+                        myMap.controls.add('zoomControl');
+                        myMap.controls.add('trafficControl');
+                        myMap.controls.add('miniMap');
 
-                        // Открытие балуна кластера с выбранным объектом.
+                        //                    var myButton = new ymaps.control.Button({
+                        //                        data: {
+                        //                            content: 'Save position',
+                        //                            title: 'Save position'
+                        //                        }
+                        //                    }, {
+                        //                        selectOnClick: false
+                        //                    }
+                        //);
+                        //                    myButton.events
+                        //                        .add('click', function () {
+                        //                            methods.send();
+                        //                        });
+                        //                    myMap.controls.add(myButton, { top: 5, left: 160 });
 
-                        // Поскольку по умолчанию объекты добавляются асинхронно,
-                        // обработку данных можно делать только после события, сигнализирующего об
-                        //// окончании добавления объектов на карту.
-                        //clusterer.events.add('objectsaddtomap', function () {
+                        SetPlacement(myMap, myLatitude, myLongitude, "Blue");
+                        GetGeoLocation();
 
-                        //    // Получим данные о состоянии объекта внутри кластера.
-                        //    var geoObjectState = clusterer.getObjectState(myGeoObjects[1]);
-                        //    // Проверяем, находится ли объект находится в видимой области карты.
-                        //    if (geoObjectState.isShown) {
+                        if(users !== undefined) {
+                            for(var i = 0; i < users.length; i++) {
+                                var placemark = new ymaps.Placemark(
+                                    [users[i].Latitude, users[i].Longitude],
+                                    {
+                                        //balloonContent: "",
+                                        iconContent: users[i].Name
+                                    },
+                                    {
+                                        preset: "twirl#darkgreenIcon"
+                                    }
+                                );
 
-                        //        // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
-                        //        if (geoObjectState.isClustered) {
-                        //            geoObjectState.cluster.state.set('activeObject', myGeoObjects[1]);
-                        //            geoObjectState.cluster.balloon.open();
 
-                        //        } else {
-                        //            // Если объект не попал в кластер, открываем его собственный балун.
-                        //            myGeoObjects[1].balloon.open();
-                        //        }
-                        //    }
-
-                        //});
-
-                        myMap.geoObjects.add(clusterer);
-
-                    }
-                }
-                function SetPlacement(myMap, Latitude, Longitude, Color) {
-                    var presetStyle = "twirl#blueIcon";
-                    if (Color == "Red") presetStyle = "twirl#redIcon";
-                    var placemark = new ymaps.Placemark(
-                        [Latitude, Longitude],
-                        {
-                            iconContent: "I"
-                        },
-                        {
-                            preset: presetStyle,
-                            draggable: true
+                                myMap.geoObjects.add(placemark);
+                            }
                         }
-                    );
 
-                    placemark.events.add('click', function () { methods.send(); });
+                        if (points !== undefined) {
+                            //http://api.yandex.ru/maps/doc/jsapi/2.x/ref/reference/Clusterer.xml
 
-                    placemark.events.add('dragend', function () {
-                        var coor = placemark.geometry.getCoordinates();
-                        myLatitude = coor[0];
-                        myLongitude = coor[1];
-                        myAccuracy = 1;
-                    });
+                            // создание кластеризатора
+                            // создадим массив геообъектов
+                            myGeoObjects = [];
 
-                    myLocationPoint.add(placemark);
-                    
-                    myMap.geoObjects.add(myLocationPoint);
-                    myMap.panTo([Latitude, Longitude]);
-                }
-                function GetGeoLocation() {
-                    var timeoutTime = 10 * 1000 * 1000;
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(
-                        SetMyCoords,
-                        displayError,
-                        { enableHighAccuracy: true, timeout: timeoutTime, maximumAge: 0 }
-                        );
-                    } else {
-                        alert("Geolocation API is not supported on your browser");
+                            for (var i = 0; i < points.length; i++) {
+                                myGeoObjects[i] = new ymaps.GeoObject({
+                                    geometry: { type: "Point", coordinates: [points[i].Latitude, points[i].Longitude] },
+                                    properties: {
+                                        clusterCaption: points[i].Title
+                                        //, balloonContentBody: 'Содержимое балуна геообъекта №1.'
+                                    }
+                                });
+                            }
+                            //myGeoObjects[0] = new ymaps.GeoObject({
+                            //    geometry: { type: "Point", coordinates: [56.034, 36.992] },
+                            //    properties: {
+                            //        clusterCaption: 'Геообъект №1',
+                            //        balloonContentBody: 'Содержимое балуна геообъекта №1.'
+                            //    }
+                            //});
+                            //myGeoObjects[1] = new ymaps.GeoObject({
+                            //    geometry: { type: "Point", coordinates: [56.021, 36.983] },
+                            //    properties: {
+                            //        clusterCaption: 'Геообъект №2',
+                            //        balloonContentBody: 'Содержимое балуна геообъекта №2.'
+                            //    }
+                            //});
+
+                            // создадим кластеризатор и запретим приближать карту при клике на кластеры
+                            clusterer = new ymaps.Clusterer({
+                                clusterDisableClickZoom: true,
+                                openBalloonOnClick: false
+                            });
+                            clusterer.add(myGeoObjects);
+
+
+                            // Открытие балуна кластера с выбранным объектом.
+
+                            // Поскольку по умолчанию объекты добавляются асинхронно,
+                            // обработку данных можно делать только после события, сигнализирующего об
+                            //// окончании добавления объектов на карту.
+                            //clusterer.events.add('objectsaddtomap', function () {
+
+                            //    // Получим данные о состоянии объекта внутри кластера.
+                            //    var geoObjectState = clusterer.getObjectState(myGeoObjects[1]);
+                            //    // Проверяем, находится ли объект находится в видимой области карты.
+                            //    if (geoObjectState.isShown) {
+
+                            //        // Если объект попадает в кластер, открываем балун кластера с нужным выбранным объектом.
+                            //        if (geoObjectState.isClustered) {
+                            //            geoObjectState.cluster.state.set('activeObject', myGeoObjects[1]);
+                            //            geoObjectState.cluster.balloon.open();
+
+                            //        } else {
+                            //            // Если объект не попал в кластер, открываем его собственный балун.
+                            //            myGeoObjects[1].balloon.open();
+                            //        }
+                            //    }
+
+                            //});
+
+                            myMap.geoObjects.add(clusterer);
+
+                        }
                     }
-                }
-                function SetMyCoords(position) {
-                    myLatitude = position.coords.latitude;
-                    myLongitude = position.coords.longitude;
-                    myAccuracy = position.coords.accuracy;
-                    myLocationPoint.removeAll();
-                    SetPlacement(myMap, myLatitude, myLongitude, "Red");
-                }
-                function displayPosition(position) {
-                    alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
-                }
-                function displayError(error) {
-                    var errors = {
-                        1: 'No access',
-                        2: 'Location can not be determined',
-                        3: 'Connect timeout'
-                    };
-                    alert("Error: " + errors[error.code]);
-                }
 
-            });
+                    function SetPlacement(myMap, Latitude, Longitude, Color) {
+                        var presetStyle = "twirl#blueIcon";
+                        if (Color == "Red") presetStyle = "twirl#redIcon";
+                        var placemark = new ymaps.Placemark(
+                            [Latitude, Longitude],
+                            {
+                                iconContent: "I"
+                            },
+                            {
+                                preset: presetStyle,
+                                draggable: true
+                            }
+                        );
+
+                        placemark.events.add('click', function() { methods.send(); });
+
+                        placemark.events.add('dragend', function() {
+                            var coor = placemark.geometry.getCoordinates();
+                            myLatitude = coor[0];
+                            myLongitude = coor[1];
+                            myAccuracy = 1;
+                        });
+
+                        myLocationPoint.add(placemark);
+
+                        myMap.geoObjects.add(myLocationPoint);
+                        myMap.panTo([Latitude, Longitude]);
+                    }
+
+                    function GetGeoLocation() {
+                        var timeoutTime = 10 * 1000 * 1000;
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(
+                                SetMyCoords,
+                                displayError,
+                                { enableHighAccuracy: true, timeout: timeoutTime, maximumAge: 0 }
+                            );
+                        } else {
+                            alert("Geolocation API is not supported on your browser");
+                        }
+                    }
+
+                    function SetMyCoords(position) {
+                        myLatitude = position.coords.latitude;
+                        myLongitude = position.coords.longitude;
+                        myAccuracy = position.coords.accuracy;
+                        myLocationPoint.removeAll();
+                        SetPlacement(myMap, myLatitude, myLongitude, "Red");
+                    }
+
+                    function displayPosition(position) {
+                        alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+                    }
+
+                    function displayError(error) {
+                        var errors = {
+                            1: 'No access',
+                            2: 'Location can not be determined',
+                            3: 'Connect timeout'
+                        };
+                        alert("Error: " + errors[error.code]);
+                    }
+
+                });
+            }
         },
         send: function () {
             $.ajax({

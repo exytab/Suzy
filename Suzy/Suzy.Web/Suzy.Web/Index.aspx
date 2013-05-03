@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="Suzy.Web.Index" %>
+<%@ Import Namespace="Suzy.BO" %>
+<%@ Import Namespace="Suzy.Web" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="PageContent" runat="server">
     <!--MAP-->
     <div class="container-fluid" style="line-height: 0px;">
@@ -33,9 +35,30 @@ margin-right: -20px;">
 <asp:Content ID="ContentJS1" ContentPlaceHolderID="JsContent" runat="server">
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $("#big-map").suzyMap();
-
+            var setting = {};
+            <%
+            if(SessionManager.IsAuthorization())
+            {
+                %>
+            setting.users = new Array();
+                <%
+                foreach (Suzy.BO.Account account in SessionManager.GetAccount().GetFollowing())
+                {
+                    LocationArea lastPoint = account.LastPoint();
+                    if(lastPoint != null)
+                    { %>
+            var user<%= account.id %> = new Object();
+            user<%= account.id %>.Latitude = "<%= lastPoint.lattitude %>";
+            user<%= account.id %>.Longitude = "<%= lastPoint.longtitude %>";
+            user<%= account.id %>.Name = "<%= account.name ?? account.email %>";
+            setting.users.push(user<%= account.id %>);
+                <%
+                    }
+                }
+            }
+            %>
+            
+            $("#big-map").suzyMap(setting);
         });
 
 </script>
