@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище CustomSuzyModel" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище CustomSuzyModel" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="Хранилище CustomSuzyModelContainer">
-          <EntitySet Name="account" EntityType="Хранилище CustomSuzyModel.account" store:Type="Tables" />
-          <EntitySet Name="avatar" EntityType="Хранилище CustomSuzyModel.avatar" store:Type="Tables" />
-          <EntitySet Name="location_area" EntityType="Хранилище CustomSuzyModel.location_area" store:Type="Tables" />
-          <EntitySet Name="subscriber" EntityType="Хранилище CustomSuzyModel.subscriber" store:Type="Tables" />
+          <EntitySet Name="account" EntityType="Хранилище CustomSuzyModel.account" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="avatar" EntityType="Хранилище CustomSuzyModel.avatar" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="location_area" EntityType="Хранилище CustomSuzyModel.location_area" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="subscriber" EntityType="Хранилище CustomSuzyModel.subscriber" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FC_account_avatar" Association="Хранилище CustomSuzyModel.FC_account_avatar">
             <End Role="avatar" EntitySet="avatar" />
             <End Role="account" EntitySet="account" />
@@ -133,7 +133,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CustomSuzyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="CustomSuzyEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="accounts" EntityType="CustomSuzyModel.account" />
           <EntitySet Name="avatars" EntityType="CustomSuzyModel.avatar" />
@@ -338,6 +338,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>
