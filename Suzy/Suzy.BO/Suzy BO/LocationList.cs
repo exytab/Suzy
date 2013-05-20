@@ -45,7 +45,9 @@ namespace Suzy.BO
             }
 
         }
-
+        /// <summary>
+        /// Возвращаем локацию для определенного ID
+        /// </summary>
         public static List<LocationArea> GetByAccount(int accountId)
         {
             using (CustomSuzyEntities db = new CustomSuzyEntities())

@@ -69,7 +69,7 @@ namespace Suzy.BO
             _account = new account();
         }
         /// <summary>
-        /// Это наш конструктор для аккаунтов без параметров
+        /// Это наш конструктор для аккаунтов с параметрами
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -121,6 +121,9 @@ namespace Suzy.BO
             Save();
         }
 
+        /// <summary>
+        /// Получаем аватар(синий)
+        /// </summary>
         public string GetAvatar()
         {
             if (this.id_avatar > 1)
@@ -147,6 +150,9 @@ namespace Suzy.BO
             return this.id_avatar > 1;
         }
 
+        /// <summary>
+        /// Проверяет подписанность на аккаунт
+        /// </summary>
         public bool IsFollower(int accountId)
         {
             using (CustomSuzyEntities db = new CustomSuzyEntities())
@@ -158,7 +164,24 @@ namespace Suzy.BO
                 return subs.Any();
             }
         }
-
+        /// <summary>
+        /// Проверяет, есть ли подписчиком аккаунт
+        /// </summary>
+        public bool IsFollowing(int accountId)
+        {
+            using (CustomSuzyEntities db = new CustomSuzyEntities())
+            {
+                var subs = from sub in db.subscribers
+                           where sub.id_leader == accountId &&
+                           sub.id_subscriber == this.id
+                           select sub;
+                return subs.Any();
+            }
+        }
+        
+        /// <summary>
+        /// Проверяет, есть ли подписчиком аккаунт
+        /// </summary>
         public bool IsFollowing(int accountId)
         {
             using (CustomSuzyEntities db = new CustomSuzyEntities())
@@ -171,6 +194,10 @@ namespace Suzy.BO
             }
         }
 
+        /// <summary>
+        /// Подпись на аккаунт
+        /// </summary>
+        /// <param name="location_area">Аккаунт на который подписываемся</param>
         public void Following(int accountId)
         {
             if (this.id > 0 && this.id != accountId)
@@ -195,6 +222,9 @@ namespace Suzy.BO
             }
         }
 
+        /// <summary>
+        /// Убрать подпись на аккаунт
+        /// </summary>
         public void UnFollowing(int accountId)
         {
             if (this.id > 0 && this.id != accountId)
@@ -213,7 +243,10 @@ namespace Suzy.BO
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Возвращение последней удачной локации
+        /// </summary>
         public LocationArea LastPoint()
         {
             using (CustomSuzyEntities db = new CustomSuzyEntities())

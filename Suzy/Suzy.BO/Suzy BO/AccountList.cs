@@ -67,7 +67,9 @@ namespace Suzy.BO
 
         }
 
-
+        /// <summary>
+        /// Получаем из базы аккаунт по мейлу и паролю
+        /// </summary>
         public static Account Get(string email, string password)
         {
             Account result = null;
@@ -90,7 +92,9 @@ namespace Suzy.BO
             }
             return result;
         }
-
+        /// <summary>
+        /// Получаем из базы аккаунт по мейлу
+        /// </summary>
         public static Account Get(string email)
         {
             Account result = null;
@@ -114,7 +118,9 @@ namespace Suzy.BO
             }
             return result;
         }
-
+        /// <summary>
+        /// Получаем из базы аккаунт по мейлу
+        /// </summary>
         public static Account GetByName(string name)
         {
             Account result = null;
@@ -136,8 +142,9 @@ namespace Suzy.BO
             }
             return result;
         }
-
-
+         /// <summary>
+        /// Получаем из базы аккаунт по ID
+        /// </summary>
         public static Account Get(int id)
         {
             if(id > 0)
@@ -153,7 +160,9 @@ namespace Suzy.BO
         }
 
         //TODO: Get: query
-
+        /// <summary>
+        /// Получаем аккаунты, на которых подписаны
+        /// </summary>
         public static List<Account> GetFollowing(int accountId)
         {
             if (accountId > 0)
@@ -170,6 +179,9 @@ namespace Suzy.BO
             return null;
         }
 
+        /// <summary>
+        /// Получаем получаем подписчиков на аккаунт
+        /// </summary>
         public static List<Account> GetFollowers(int accountId)
         {
             if (accountId > 0)
