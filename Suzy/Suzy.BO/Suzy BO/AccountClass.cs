@@ -179,20 +179,20 @@ namespace Suzy.BO
             }
         }
         
-        /// <summary>
-        /// Проверяет, есть ли подписчиком аккаунт
-        /// </summary>
-        public bool IsFollowing(int accountId)
-        {
-            using (CustomSuzyEntities db = new CustomSuzyEntities())
-            {
-                var subs = from sub in db.subscribers
-                           where sub.id_leader == accountId &&
-                           sub.id_subscriber == this.id
-                           select sub;
-                return subs.Any();
-            }
-        }
+        ///// <summary>
+        ///// Проверяет, есть ли подписчиком аккаунт
+        ///// </summary>
+        //public bool IsFollowing(int accountId)
+        //{
+        //    using (CustomSuzyEntities db = new CustomSuzyEntities())
+        //    {
+        //        var subs = from sub in db.subscribers
+        //                   where sub.id_leader == accountId &&
+        //                   sub.id_subscriber == this.id
+        //                   select sub;
+        //        return subs.Any();
+        //    }
+        //}
 
         /// <summary>
         /// Подпись на аккаунт
