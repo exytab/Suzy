@@ -27,11 +27,11 @@
                        }
                        else if(SessionManager.GetAccount().IsFollowing(account.id))
                        {
-                           %><input class="btn btn-mini btn-danger userFolButton" id="<%=account.id %>" type="button" value="Follow"><%
+                           %><input class="btn btn-mini btn-danger userFolButton" id="<%=account.id %>" type="button" value="Following"><%
                        }
                        else
                        {
-                            %><input class="btn btn-mini btn-success userFolButton" id="<%=account.id %>"type="button" value="Following"><%
+                            %><input class="btn btn-mini btn-success userFolButton" id="<%=account.id %>"type="button" value="Follow"><%
                        }
                    }
                      %></td>
